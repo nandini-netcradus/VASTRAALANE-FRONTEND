@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_sunglasses.scss";
- import { useNavigate } from "react-router-dom";
+
 
 // ✅ Import all sunglasses images
 import DolceGabbana from "../assets/_Dolce_and_gabbana_5011.png";

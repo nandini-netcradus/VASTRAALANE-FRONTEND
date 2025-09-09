@@ -1,7 +1,6 @@
 import React, { useState }from "react";
 import "../scss/_newArrivals.scss";
-import { useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
+
 // 📂 Perfume & Gift Sets
 import ACQUA_DI_GIO_GIORGIO_ARMAN_white from "../assets/_ACQUA_DI_GIO_GIORGIO_ARMAN_white.png";
 import Calvin_Klein_Gift_Set_4 from "../assets/_Calvin_Klein_Gift_Set_4.png";
@@ -53,7 +52,7 @@ import BG11 from "../assets/BG11.png";
 import Birkenstock_Arizona_black_grey_split from "../assets/Birkenstock Arizona black grey split.png";
 import BIRKENSTOCK_ARIZONA_EVA_BLACK_Copy_2 from "../assets/BIRKENSTOCK ARIZONA EVA BLACK - Copy (2).png";
 import BIRKENSTOCK_ARIZONA_EVA_BLUE from "../assets/BIRKENSTOCK ARIZONA EVA BLUE.png";
-import BIRKENSTOCK_ARIZONA_EVA_GREY_Copy_2 from "../assets/BIRKENSTOCK ARIZONA EVA GREY - Copy (2).png";
+
 import BIRKENSTOCK_ARIZONA_EVA_GREY from "../assets/BIRKENSTOCK ARIZONA EVA GREY.png";
 import Birkenstock_arizona_Ivory_Leather from "../assets/Birkenstock arizona Ivory Leather.png";
 import Birkenstock_Arizona_Leather_Brown_Copy from "../assets/Birkenstock Arizona Leather Brown - Copy.jpg";
@@ -62,7 +61,7 @@ import Birkenstock_Arizona_Sky_Blue_Suede_Copy_2 from "../assets/Birkenstock Ari
 import Birkenstock_Arizona_Sky_Blue_Suede_Copy from "../assets/Birkenstock Arizona Sky Blue Suede - Copy.png";
 import Birkenstock_Arizona_Suede from "../assets/Birkenstock Arizona Suede.png";
 import Birkenstock_boston_Dark_Grey_Copy_2 from "../assets/Birkenstock boston Dark Grey - Copy (2).png";
-import Birkenstock_boston_Dark_Grey from "../assets/Birkenstock boston Dark Grey.png";
+
 import Birkenstock_boston_tan_Suede from "../assets/Birkenstock boston tan suede.png";
 import Birkenstock_brown_ramses_Copy_2 from "../assets/Birkenstock brown ramses - Copy (2).png";
 

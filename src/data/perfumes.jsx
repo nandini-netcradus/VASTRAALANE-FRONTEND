@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_perfume.scss";
-import { useNavigate } from "react-router-dom";
+
 
 // 🔽 Import all perfume images
 import AcquaDiGio from "../assets/_ACQUA_DI_GIO_GIORGIO_ARMAN_white.png";

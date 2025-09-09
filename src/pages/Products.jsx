@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../scss/_products.scss";
-import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 
@@ -86,7 +85,7 @@ const Products = () => {
   const [quantity, setQuantity] = useState(1);
   const [popup, setPopup] = useState("");
   
-const { cart, addToCart, wishlist, setWishlist } = useCart();
+const {  addToCart, wishlist, setWishlist } = useCart();
 
 
   const showPopup = (message) => {
@@ -111,7 +110,7 @@ const { cart, addToCart, wishlist, setWishlist } = useCart();
 
   const incrementQty = () => setQuantity((prev) => prev + 1);
   const decrementQty = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-  const handleBack = () => setSelectedProduct(null);
+  // const handleBack = () => setSelectedProduct(null);
 
   const filteredProducts = productList
     .filter(

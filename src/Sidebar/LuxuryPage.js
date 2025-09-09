@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "../scss/_LuxuryPage.scss";
 
 // Images import

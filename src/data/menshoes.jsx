@@ -62,13 +62,7 @@ import Onitsuka_Tiger_Mexico_66_SD_Cream_Black_Orange_For_Her_276 from "../asset
 import Onitsuka_Tiger_Mexico_66_SD_Pink_252 from "../assets/Onitsuka Tiger Mexico 66 SD Pink (252.png";
 import Onitsuka_Tiger_Mexico_66_Slip_On_Black_105 from "../assets/Onitsuka Tiger Mexico 66 Slip On Black 105.png";
 import Onitsuka_Tiger_Mexico_66_Slip_On_Green_For_Her from "../assets/Onitsuka Tiger Mexico 66 Slip On Green For Her.png";
-import Onitsuka_Tiger_Mexico_66_Slip_On_Pink_291 from "../assets/Onitsuka Tiger Mexico 66 Slip On Pink 291.png";
-import Onitsuka_Tiger_Mexico_66_Slip_On_Yellow_For_Her_268 from "../assets/Onitsuka Tiger Mexico 66 Slip On Yellow For Her 268.png";
-import Onitsuka_Tiger_Mexico_retro_green_265 from "../assets/Onitsuka Tiger Mexico retro green (265.png";
-import Onitsuka_tiger_Mexico_triple_Black_225_Copy from "../assets/Onitsuka tiger Mexico triple Black 225 - Copy.png";
-import Patou_X_Onitsuka_Tiger_Mexico_66_204 from "../assets/Patou X Onitsuka Tiger Mexico 66 204.jpg";
-import Puma_RS_fast_unmarked_black_grey from "../assets/pum a RS fast unmarked black grey.png";
-import Puma_RS_fast_unmarked_black_greyr from "../assets/pum a RS fast unmarked black greyr.jpg";
+
 
 
 const menshoes = [

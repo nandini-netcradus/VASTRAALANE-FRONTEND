@@ -6,50 +6,36 @@ import ArmaniExchange from "../assets/Arman_i_ Exchange watch.jpg";
 import Audemars1 from "../assets/AUDEMAR.S PIGUET.jpg";
 import Audemars2 from "../assets/AUDEMARS_PIGUET AUTOMATIC WATCH ROYAL OAK 2308 - Copy (2).png";
 import Audemars3 from "../assets/AUDEMARS_PIGUET ROYAL OAK (2303) - Copy.png";
-import BoysWatch from "../assets/Boyswatch.jpg";
+
 import Emporio1 from "../assets/Emporio Arman_i AR1143 - J1457.png";
 import Emporio2 from "../assets/Emporio Arman_i Classic Silver-Black 2341 - Copy (2).png";
 import Emporio3 from "../assets/Emporio Arman_i For her 2317 - Copy.png";
-import Emporio4 from "../assets/Emporio Arman_i For her 2325.png";
+
 import Hublot1 from "../assets/Hublo t big bang classic 2164.png";
 import Hublot2 from "../assets/HUBLO_T BIGBANG UNICO SKY BLUE WATCH 2304 - Copy (2).png";
-import LuxuryMain from "../assets/LUXURYWATCH78.jpg";
+
 import Omega1 from "../assets/Omeg a Seamaster Aqua Terra Blue Japanese Automatic 2298 - Copy.png";
 import Omega2 from "../assets/OMEG A SPEEDMASTER MOONWATCH PROFESSIONAL 2294.png";
 import Omega3 from "../assets/OMEG A SPEEDMASTER PILOT AUTO.png";
-import Omega4 from "../assets/Omeg a Speedmaster Professional Moonwatch 2300 - Copy.png";
-import Omega5 from "../assets/OMEG A SPEEDMASTER SNOOPY METAL AUTOMATIC 2295.png";
-import Omega6 from "../assets/OMEG A SPEEDMASTER SNOOPY MOONWATCH LIMITED EDITION STAINLESS STEEL 2297 - Copy.png";
+
 import Panerai from "../assets/Panerai Radiomir California 2309.png";
 import Patek1 from "../assets/patek_philippe_nautilus_2342.png";
-import Patek2 from "../assets/Pate k Philippe Nautilus Diamond 2343.png";
-import Patek3 from "../assets/PatekPHILIP_E_AUTO.jpg";
+
 import Rado from "../assets/Rad_o diastar open heart.png";
 import Rolex1 from "../assets/Role_x Oyster perpetual - Copy.png";
-import Rolex2 from "../assets/Role_x Oyster Perpetual Date.png";
-import Rolex3 from "../assets/Role_x Oyster perpetual Day Date 40 Battery - J1451.png";
-import Rolex4 from "../assets/Role_x Oyster perpetual Day Date 40 Battery - J1452.png";
-import Rolex5 from "../assets/Role_x Oyster perpetual Day Date 40 Battery - J1454.png";
-import Rolex6 from "../assets/Role_x Oyster perpetual Day Date Diamond 40 Battery - J1447.png";
-import Rolex7 from "../assets/Role_x_Oyster perpetual.png";
 import Rolex8 from "../assets/ROLE_X_YACHTMASRER.jpg";
-import Rolex9 from "../assets/Rolex_Couple_Oyster_Perpetual_Day-Date_Twotone_Rose_Gold-Black.png";
-import Rolex10 from "../assets/ROLLEX DATE JUST DIAL.jpg";
+
 import Seiko1 from "../assets/SEIKO 5 quartz WATCH Bluee 014.png";
 import Seiko2 from "../assets/SEIKO 5 quartz WATCH Green 014.png";
-import SevenFriday1 from "../assets/SEVEN FRIDAY P3C04 EXTRA BELT (2303).png";
-import SevenFriday2 from "../assets/SEVEN FRIDAY_P3C04 EXTRA BELT (2303).png";
-import Tag1 from "../assets/Tag Heue r Calibre 16 2287.png";
-import Tag2 from "../assets/Tag Heue r Calibre 16 Blue Dial Chronographs 2286 - Copy.png";
-import Tag3 from "../assets/Tag_Heuer Watche.png";
+
+
 import Tissot1 from "../assets/TISSO T COUPLE WATCH 2291.png";
 import Tissot2 from "../assets/Tisso t PRX Premium Watch Back open 2289.png";
-import Tissot3 from "../assets/Tisso t PRX Premium Watch Back open 2290.png";
+
 import Tommy1 from "../assets/Tommy_Hilfiger Decker - J1458.png";
-import Tommy2 from "../assets/TOMMY_HILFIGER MENS.jpg";
+
 import Versace1 from "../assets/Versace Aion Chronograph.png";
-import Versace2 from "../assets/Versace Aion_Chronograph.png";
-import Versace3 from "../assets/Versace_Aion_Chronograph.png";
+
 
 // ✅ Product Data Array (names same as file names)
 const products = [

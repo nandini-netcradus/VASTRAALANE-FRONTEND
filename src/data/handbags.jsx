@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_handbags.scss";
-import { useNavigate } from "react-router-dom";
+
 import { useCart } from "../context/CartContext";
 
 // ✅ Import all handbag images

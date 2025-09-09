@@ -7,7 +7,7 @@ import AirJordanBlack from "../assets/Air Jordan Black Premium Oversized Cord Se
 import AirJordanCream from "../assets/Air Jordan Cream Premium Oversized Cord Set - Copy (2).png";
 import AirJordanNavy from "../assets/Air Jordan Navy Blue Premium Oversized Cord Set - Copy (3).png";
 import ArmaniExchangeWhite from "../assets/Arman i Exchange White Embroidered Patch Logo Eagle Edition Imported Fabric Tracksuit With Carry Bag 2631.png";
- import AsicsGel from "../assets/Asic_s gel kayano 31 rich navy spicy lette - Copy (2).png";
+
 import BalmainBlack from "../assets/Balmai n Paris Black Premium Imported Japanese Fabric Monogram Printed Tracksuit 2844.png";
 import BalmainNavy from "../assets/Balmai n Paris Navy Premium Imported Japanese Fabric Monogram Printed Tracksuit 2843 - Copy (3).png";
 import BalmainWhite from "../assets/Balmai n Paris White Premium Imported Japanese Fabric Monogram Printed Tracksuit 2845 - Copy (3).png";

@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
 import ProductSlider from "../components/ProductSlider";
 import VideoSection from "../components/VideoSection";
-import Footer from "../components/Footer"; 
 import ProductDetail from "../pages/ProductDetail";
 
 import "../scss/_home.scss";

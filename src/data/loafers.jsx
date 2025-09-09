@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import "../scss/_loafers.scss";
-import { useNavigate, useParams ,useLocation} from "react-router-dom";
+import { useNavigate,useLocation} from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 
