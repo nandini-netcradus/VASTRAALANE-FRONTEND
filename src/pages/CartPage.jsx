@@ -1,7 +1,5 @@
 
-
-import React from "react";
- import { useCart } from "../context/CartContext";
+import React from "react"; import { useCart } from "../context/CartContext";
 import "../scss/CartPage.scss";
 const CartPage = () => {
   const { cart, removeFromCart } = useCart();

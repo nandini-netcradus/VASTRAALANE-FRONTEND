@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../scss/_tshirts.scss";
 import { FaCheckCircle } from "react-icons/fa";
-
+import { useCart } from "../context/CartContext";
 
 // 🔽 Images import
 import VersaceBlue from "../assets/Versace Couture Petrol Blue Back Print Imported Polo T-Shirtt.png";
@@ -76,6 +76,28 @@ const tshirts = [
 
 const Tshirts = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("M");
+  const [quantity, setQuantity] = useState(1);
+
+  const { addToCart, addToWishlist } = useCart();
+
+  const handleAddToCart = () => {
+    if (!selectedProduct) return;
+    const cartItem = {
+      ...selectedProduct,
+      size: selectedSize,
+      quantity,
+    };
+    addToCart(cartItem);
+    alert("✅ Added to cart!");
+  };
+
+  const handleAddToWishlist = () => {
+    if (!selectedProduct) return;
+    addToWishlist(selectedProduct);
+    alert("❤️ Added to wishlist!");
+  };
+
 
   return (
     <div className="tshirts-page">
@@ -139,8 +161,12 @@ const Tshirts = () => {
 
               {/* Action Buttons */}
               <div className="product-actions">
-                <button className="btn-cart">Add to Cart</button>
-                <button className="btn-wishlist">Wishlist</button>
+                <button className="btn-cart" onClick={handleAddToCart}>
+                  Add to Cart
+                </button>
+                <button className="btn-wishlist" onClick={handleAddToWishlist}>
+                  Wishlist
+                </button>
                 <button className="btn-buy">Buy Now</button>
               </div>
 
@@ -196,3 +222,6 @@ const Tshirts = () => {
 };
 
 export default Tshirts;
+
+
+
