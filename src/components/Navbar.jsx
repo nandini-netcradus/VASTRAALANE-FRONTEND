@@ -71,7 +71,7 @@ const Navbar = () => {
 
         {/* ✅ Drawer ke andar icons */}
         <div className="drawer-icons">
-          <FaSearch className="icon" />
+          {/* <FaSearch className="icon" /> */}
           <FaUser className="icon" />
           <FaShoppingCart className="icon" />
         </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
 
       {/* ✅ Desktop ke liye icons */}
       <div className="nav-icons">
-        <FaSearch className="icon" />
+        {/* <FaSearch className="icon" /> */}
         <FaUser className="icon" />
         <FaShoppingCart className="icon" />
       </div>
