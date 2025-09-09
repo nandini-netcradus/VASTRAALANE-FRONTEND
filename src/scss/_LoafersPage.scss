@@ -1,0 +1,230 @@
+.loafers-page {
+  padding: 40px;
+  background: #f9f9f9;
+  min-height: 100vh;
+
+  .page-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 60px;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      }
+
+      .product-image img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .product-info {
+        margin-top: 10px;
+        text-align: center;
+
+        h4 {
+          font-size: 16px;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+
+        .old-price {
+          text-decoration: line-through;
+          color: #888;
+          font-size: 14px;
+        }
+
+        .current-price {
+          color: #27ae60;
+          font-weight: 700;
+          font-size: 16px;
+        }
+
+        .discount {
+          color: #e74c3c;
+          font-weight: 600;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .product-details-page {
+    .back-btn {
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .main-product {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+      img {
+        flex: 1 1 300px;
+        max-width: 400px;
+        border-radius: 12px;
+      }
+
+      .product-details-info {
+        flex: 1 1 300px;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+
+        .old-price {
+          text-decoration: line-through;
+          color: #888;
+          font-size: 16px;
+        }
+
+        .current-price {
+          color: #27ae60;
+          font-weight: 700;
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+
+        .discount {
+          color: #e74c3c;
+          font-weight: 600;
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+
+        .details-box {
+          background: #f5f5f5;
+          padding: 20px;
+          border-radius: 12px;
+          margin-top: 15px;
+
+          h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
+
+          ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-bottom: 15px;
+
+            li {
+              font-size: 15px;
+              margin-bottom: 6px;
+              color: #555;
+            }
+          }
+
+          .description {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 20px;
+          }
+
+          .action-buttons {
+            display: flex;
+            gap: 10px;
+
+            button {
+              padding: 10px 15px;
+              border-radius: 8px;
+              font-weight: 600;
+              cursor: pointer;
+              border: none;
+              transition: 0.2s;
+
+              &.buy-now {
+                background: #27ae60;
+                color: #fff;
+                &:hover { background: #219150; }
+              }
+
+              &.add-to-cart {
+                background: #2980b9;
+                color: #fff;
+                &:hover { background: #21618c; }
+              }
+
+              &.wishlist {
+                background: #e74c3c;
+                color: #fff;
+                &:hover { background: #c0392b; }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .related-products-grid {
+      display: grid;
+      
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 60px;
+
+      .related-product-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+          
+        }
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+          margin-bottom: 8px;
+        }
+
+        h4 {
+          font-size: 14px;
+          margin-bottom: 5px;
+          font-weight: 600;
+        }
+
+        .current-price {
+          color: #27ae60;
+          font-weight: 700;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
