@@ -8,6 +8,7 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 25px;
+    margin-top: 60px;
   }
 
   .products-grid {
@@ -279,25 +280,30 @@
   }
 }
 
-
-// ✅ Responsive
+/* Responsive for mobile */
 @media (max-width: 768px) {
-  .details-container {
-    flex-direction: column;
-    text-align: center;
+  .luxury-page {
+    padding: 1px; // thoda kam padding
 
-    .details-image {
-      img {
-        max-height: 300px;
-      }
-    }
-
-    .details-info {
-      .action-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr); // ✅ 2 cards per row
+      // display: flex;
+       flex-wrap: wrap;
+      gap: 12px;
+      justify-items: start;
     }
   }
 }
+
+@media (max-width: 480px) {
+  .luxury-page {
+    .products-grid {
+      grid-template-columns: 1fr; // ✅ very small screens me 1 card per row
+      justify-items: center;
+    }
+
+
+  }
+}
+
 

@@ -133,7 +133,7 @@ const Tracksuits = () => {
       </div>
 
       {/* ✅ Related Items Section */}
-      <div className="related-items">
+      {/* <div className="related-items">
         <h3>Related Tracksuits</h3>
         <div className="related-grid">
           {tracksuits
@@ -151,7 +151,7 @@ const Tracksuits = () => {
               </div>
             ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

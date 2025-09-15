@@ -118,9 +118,7 @@ const JeansPage = () => {
         </>
       ) : (
         <div className="jeans-details">
-          <button className="back-btn" onClick={handleBack}>
-            &larr; Back
-          </button>
+          
           <div className="details-container">
             <div className="details-image">
               <img src={selectedProduct.image} alt={selectedProduct.name} />

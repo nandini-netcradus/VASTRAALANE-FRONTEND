@@ -56,10 +56,10 @@
     }
   }
 
-  // ✅ Product Details Section
   .handbag-details {
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 25px;
 
     .back-btn {
       background: none;
@@ -75,6 +75,7 @@
       height: auto;
       object-fit: contain;
       margin-bottom: 15px;
+      margin-top: 60px;
     }
 
     h2 {
@@ -96,7 +97,6 @@
       margin-bottom: 15px;
     }
 
-    // ✅ Buttons
     .product-action-buttons {
       display: flex;
       justify-content: center;
@@ -143,7 +143,6 @@
       }
     }
 
-    // ✅ Related Products
     .related-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -185,7 +184,7 @@
     }
   }
 
-  // ✅ Responsive
+  /* ---------- Responsive for Tablets ---------- */
   @media (max-width: 768px) {
     padding: 20px;
 
@@ -193,22 +192,116 @@
       font-size: 22px;
     }
 
+    .handbag-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+
+      .handbag-card {
+        img {
+          height: 180px;
+        }
+
+        h4 {
+          font-size: 16px;
+        }
+
+        .old-price,
+        .current-price {
+          font-size: 14px;
+        }
+      }
+    }
+
     .handbag-details img {
       width: 250px;
     }
-  }
-
-  @media (max-width: 480px) {
-    .handbag-details img {
-      width: 200px;
-    }
 
     .product-action-buttons {
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 10px;
+    }
 
-      button {
-        width: 100%;
+    .related-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 15px;
+
+      .related-card {
+        img {
+          height: 150px;
+          width: 100% !important;
+        }
+
+        h4 {
+          font-size: 14px;
+        }
+
+        .current-price {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .handbag-page {
+    padding: 20px;
+
+    .page-title {
+      font-size: 22px;
+    }
+
+    /* Main handbags grid - 2 columns */
+    .handbag-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+
+      .handbag-card {
+        img {
+          height: 180px;
+        }
+
+        h4 {
+          font-size: 16px;
+        }
+
+        .old-price,
+        .current-price {
+          font-size: 14px;
+        }
+      }
+    }
+
+    /* Product details image */
+    .handbag-details img {
+      width: 100%;
+      max-width: 250px;
+    }
+
+    /* Action buttons */
+    .product-action-buttons {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Related products grid - 2 columns */
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      gap: 15px;
+
+      .related-card {
+        img {
+          height: 150px;
+        }
+
+        h4 {
+          font-size: 14px;
+        }
+
+        .current-price {
+          font-size: 13px;
+        }
       }
     }
   }

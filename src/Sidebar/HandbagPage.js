@@ -78,9 +78,7 @@ const HandbagPage = () => {
   return (
     <div className="handbag-page">
       <div className="handbag-details">
-        <button className="back-btn" onClick={() => setSelectedProduct(null)}>
-          ← Back
-        </button>
+        
         <img src={selectedProduct.image} alt={selectedProduct.name} />
         <h2>{selectedProduct.name}</h2>
         <p className="old-price">{selectedProduct.oldPrice}</p>

@@ -79,7 +79,6 @@ const SandalsPage = () => {
 
     return (
       <div className="sandals-details">
-        <button onClick={() => setSelectedProduct(null)}>Back</button>
 
         {/* ✅ 2-column wrapper */}
         <div className="details-container">

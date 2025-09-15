@@ -1,6 +1,6 @@
 // sidebar/ShirtsPage.js
 import React, { useState } from "react";
-import "../scss/_CategoryPage.scss";
+import "../scss/_ShirtsPage.scss";
 
 // 🔽 Images import
 import VersaceBlue from "../assets/Versace Couture Petrol Blue Back Print Imported Polo T-Shirtt.png";
@@ -72,6 +72,90 @@ const tshirts = [
   { id: 32, name: "Christian Dior White Premium Shirt", price: "₹4,700", oldPrice: "₹5,400", discount: "13% off", image: DiorWhite },
 ];
 
+// const ShirtsPage = () => {
+//   const [selectedProduct, setSelectedProduct] = useState(null);
+
+//   const handleProductClick = (prod) => {
+//     setSelectedProduct(prod);
+//   };
+
+//   const handleBack = () => {
+//     setSelectedProduct(null);
+//   };
+
+//   const relatedProducts = selectedProduct
+//     ? tshirts.filter((p) => p.id !== selectedProduct.id)
+//     : [];
+
+//   return (
+//     <div className="category-page">
+//       <main className="products-section">
+//         {!selectedProduct ? (
+//           <>
+//             <h2 className="page-title">Shirts & T-Shirts Collection</h2>
+//             <div className="products-grid">
+//               {tshirts.map((prod) => (
+//                 <div
+//                   key={prod.id}
+//                   className="product-card"
+//                   onClick={() => handleProductClick(prod)}
+//                   style={{ cursor: "pointer" }}
+//                 >
+//                   <div className="product-image">
+//                     <img src={prod.image} alt={prod.name} />
+//                   </div>
+//                   <div className="product-info">
+//                     <h4>{prod.name}</h4>
+//                     <p className="old-price">{prod.oldPrice}</p>
+//                     <p className="current-price">{prod.price}</p>
+//                     <p className="discount">{prod.discount}</p>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//           </>
+//         ) : (
+//           <div className="product-details-page">
+//             <button className="back-btn" onClick={handleBack}>
+//               &larr; Back
+//             </button>
+//             <div className="main-product">
+//               <img src={selectedProduct.image} alt={selectedProduct.name} />
+//               <h2>{selectedProduct.name}</h2>
+//               <p className="old-price">{selectedProduct.oldPrice}</p>
+//               <p className="current-price">{selectedProduct.price}</p>
+//               <p className="discount">{selectedProduct.discount}</p>
+//             </div>
+
+//             {relatedProducts.length > 0 && (
+//               <>
+//                 <h3>Related Products</h3>
+//                 <div className="related-products-grid">
+//                   {relatedProducts.map((p) => (
+//                     <div
+//                       key={p.id}
+//                       className="related-product-card"
+//                       onClick={() => handleProductClick(p)}
+//                       style={{ cursor: "pointer" }}
+//                     >
+//                       <img src={p.image} alt={p.name} />
+//                       <h4>{p.name}</h4>
+//                       <p className="current-price">{p.price}</p>
+//                     </div>
+//                   ))}
+//                 </div>
+//               </>
+//             )}
+//           </div>
+//         )}
+//       </main>
+//     </div>
+//   );
+// };
+
+// export default ShirtsPage;
+
+
 const ShirtsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -99,7 +183,6 @@ const ShirtsPage = () => {
                   key={prod.id}
                   className="product-card"
                   onClick={() => handleProductClick(prod)}
-                  style={{ cursor: "pointer" }}
                 >
                   <div className="product-image">
                     <img src={prod.image} alt={prod.name} />
@@ -116,17 +199,33 @@ const ShirtsPage = () => {
           </>
         ) : (
           <div className="product-details-page">
-            <button className="back-btn" onClick={handleBack}>
-              &larr; Back
-            </button>
+
+            {/* 🔹 Main Product Section */}
             <div className="main-product">
               <img src={selectedProduct.image} alt={selectedProduct.name} />
               <h2>{selectedProduct.name}</h2>
               <p className="old-price">{selectedProduct.oldPrice}</p>
               <p className="current-price">{selectedProduct.price}</p>
               <p className="discount">{selectedProduct.discount}</p>
+
+              {/* 🔹 Action Buttons */}
+              <div className="action-buttons">
+                <button className="buy-now">Buy Now</button>
+                <button className="add-cart">Add to Cart</button>
+                <button className="wishlist">Wishlist</button>
+              </div>
+
+              {/* 🔹 Product Features Points */}
+              <ul className="product-points">
+                <li>✅ 7 Days Return Policy</li>
+                <li>✅ Premium Quality Fabric</li>
+                <li>✅ 100% Original Product</li>
+                <li>✅ Fast & Safe Delivery</li>
+                <li>✅ Secure Payment Guarantee</li>
+              </ul>
             </div>
 
+            {/* 🔹 Related Products Section */}
             {relatedProducts.length > 0 && (
               <>
                 <h3>Related Products</h3>
@@ -136,7 +235,6 @@ const ShirtsPage = () => {
                       key={p.id}
                       className="related-product-card"
                       onClick={() => handleProductClick(p)}
-                      style={{ cursor: "pointer" }}
                     >
                       <img src={p.image} alt={p.name} />
                       <h4>{p.name}</h4>

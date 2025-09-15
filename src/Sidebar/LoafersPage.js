@@ -79,9 +79,7 @@ const LoafersPage = () => {
         </>
       ) : (
         <div className="product-details-page">
-          <button className="back-btn" onClick={handleBack}>
-            &larr; Back
-          </button>
+          
 
           <div className="main-product">
             <img src={selectedProduct.image} alt={selectedProduct.name} />
