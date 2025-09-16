@@ -27,15 +27,14 @@ const categories = [
 
 // 🔽 Products
 const products = [
-  { id: 1, name: "Tommy_Hilfiger_T-shirt", category: "Shirts & Tshirt", oldPrice: 130, currentPrice: 117, image: TshirtImg },
-  { id: 2, name: "AZZARO WANTED TONIC EDT", category: "Perfumes", oldPrice: 230, currentPrice: 217, image: PerfumeImg },
-  { id: 3, name: "High Heel and Sandals", category: "Shoes", oldPrice: 130, currentPrice: 117, image: SandalImg },
-  { id: 4, name: "nigel sylvester x air jordan 4 retro", category: "Shoes", oldPrice: 130, currentPrice: 117, image: ShoesImg },
-  { id: 5, name: "COAC_H sling bag with folding box 201", category: "Loafers", oldPrice: 130, currentPrice: 117, image: crocImg },
-  { id: 6, name: "COAC_H sling bag with folding box 201", category: "HandBags and Bag", oldPrice: 130, currentPrice: 117, image: HandbagImg },
-  { id: 7, name: "David_becham_70066.png", category: "Sunglasses", oldPrice: 130, currentPrice: 117, image: Sunglasses },
+  { id: 1, name: "Tommy_Hilfiger_T-shirt", category: "Shirts & Tshirt", oldPrice: 8000, currentPrice: 1999, image: TshirtImg },
+  { id: 2, name: "AZZARO WANTED TONIC EDT", category: "Perfumes", oldPrice: 4217, currentPrice: 1500, image: PerfumeImg },
+  { id: 3, name: "High Heel and Sandals", category: "Shoes", oldPrice: 1830, currentPrice: 1117, image: SandalImg },
+  { id: 4, name: "nigel sylvester x air jordan 4 retro", category: "Shoes", oldPrice: 3999, currentPrice: 2179, image: ShoesImg },
+  { id: 5, name: "COAC_H sling bag with folding box 201", category: "Loafers", oldPrice: 4000, currentPrice: 1340, image: crocImg },
+  { id: 6, name: "COAC_H sling bag with folding box 201", category: "HandBags and Bag", oldPrice: 7830, currentPrice: 1217, image: HandbagImg },
+  { id: 7, name: "David_becham_70066.png", category: "Sunglasses", oldPrice: 1200.00, currentPrice: 1017, image: Sunglasses },
 ];
-
 const CategoryPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -58,194 +57,45 @@ const CategoryPage = () => {
         <h3>Category</h3>
         <ul>
           {categories.map((cat, index) => {
-            if (cat === "Shirts & Tshirt") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/shirts"
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-            } else if (cat === "Loafers") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/loafers-page"
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-            } else if (cat === "Shoes") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/shoes-page"
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-              } else if (cat === "Jeans & Trouser & Trackpant") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/jeans-page"
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-              } else if (cat === "HandBags and Bag") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/handbag-page"
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-            } else if (cat === "Luxury Watch") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/Luxury-page" 
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-              } else if (cat === "Perfumes") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/Perfume-page" 
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
+            let path = "";
+            if (cat === "Shirts & Tshirt") path = "/shirts";
+            else if (cat === "Loafers") path = "/loafers-page";
+            else if (cat === "Shoes") path = "/shoes-page";
+            else if (cat === "Jeans & Trouser & Trackpant") path = "/jeans-page";
+            else if (cat === "HandBags and Bag") path = "/handbag-page";
+            else if (cat === "Luxury Watch") path = "/Luxury-page";
+            else if (cat === "Perfumes") path = "/Perfume-page";
+            else if (cat === "Cordset & Tracksuit") path = "/Cordset-page";
+            else if (cat === "Girls Sandals and jutti") path = "/Sandals-page";
+            else if (cat === "Sunglasses") path = "/Sunglasse-page";
 
-              } else if (cat === "Cordset & Tracksuit") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/Cordset-page" 
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-               } else if (cat === "Girls Sandals and jutti") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/Sandals-page" 
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-
-
-              } else if (cat === "Sunglasses") {
-              return (
-                <li key={index}>
-                  <Link
-                    to="/Sunglasse-page" 
-                    style={{
-                      textDecoration: "none",
-                      color: "inherit",
-                      fontWeight: selectedCategory === cat ? "bold" : "normal",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </Link>
-                </li>
-              );
-              
-            } else {
-              return (
-                <li
-                  key={index}
-                  onClick={() => setSelectedCategory(cat)}
+            return path ? (
+              <li key={index}>
+                <Link
+                  to={path}
                   style={{
-                    cursor: "pointer",
+                    textDecoration: "none",
+                    color: "inherit",
                     fontWeight: selectedCategory === cat ? "bold" : "normal",
+                    cursor: "pointer",
                   }}
+                  onClick={() => setSelectedCategory(cat)}
                 >
                   {cat}
-                </li>
-              );
-            }
+                </Link>
+              </li>
+            ) : (
+              <li
+                key={index}
+                onClick={() => setSelectedCategory(cat)}
+                style={{
+                  cursor: "pointer",
+                  fontWeight: selectedCategory === cat ? "bold" : "normal",
+                }}
+              >
+                {cat}
+              </li>
+            );
           })}
 
           {/* Reset category */}
@@ -311,6 +161,23 @@ const CategoryPage = () => {
                 <button>Read More</button>
               </div>
             </div>
+
+            {/* Extra Info Section */}
+            <div className="policy-info">
+              <h3>Need Help?</h3>
+              <p>
+                For any queries, reach us at{" "}
+                <a href="mailto:info@vastraalane.com">info@vastraalane.com</a>{" "}
+                or call <strong>+91-9910678434</strong>.
+              </p>
+
+              <div className="policy-points">
+                <p>✔ Returns accepted within 7 days (unused with tags).</p>
+                <p>✔ Customized or sale items are non-returnable.</p>
+                <p>✔ Refunds processed within 7–10 business days.</p>
+                <p>✔ Monday – Saturday: 10:00 AM – 8:00 PM | Sunday: Closed</p>
+              </div>
+            </div>
           </>
         ) : (
           // Product Details
@@ -321,8 +188,8 @@ const CategoryPage = () => {
             <div className="main-product">
               <img src={selectedProduct.image} alt={selectedProduct.name} />
               <h2>{selectedProduct.name}</h2>
-              <p className="old-price">${selectedProduct.oldPrice}</p>
-              <p className="current-price">${selectedProduct.currentPrice}</p>
+              <p className="old-price">₹{selectedProduct.oldPrice}</p>
+              <p className="current-price">₹{selectedProduct.currentPrice}</p>
 
               {/* Action Buttons */}
               <div className="product-action-buttons">
@@ -345,7 +212,7 @@ const CategoryPage = () => {
                     >
                       <img src={p.image} alt={p.name} />
                       <h4>{p.name}</h4>
-                      <p className="current-price">${p.currentPrice}</p>
+                      <p className="current-price">₹{p.currentPrice}</p>
                     </div>
                   ))}
                 </div>
