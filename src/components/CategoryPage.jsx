@@ -163,7 +163,7 @@ const CategoryPage = () => {
             </div>
 
             {/* Extra Info Section */}
-            <div className="policy-info">
+            {/* <div className="policy-info">
               <h3>Need Help?</h3>
               <p>
                 For any queries, reach us at{" "}
@@ -177,7 +177,7 @@ const CategoryPage = () => {
                 <p>✔ Refunds processed within 7–10 business days.</p>
                 <p>✔ Monday – Saturday: 10:00 AM – 8:00 PM | Sunday: Closed</p>
               </div>
-            </div>
+            </div> */}
           </>
         ) : (
           // Product Details

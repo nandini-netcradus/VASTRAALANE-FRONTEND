@@ -72,7 +72,7 @@ const Trousers = () => {
               <img src={item.image} alt={item.name} />
               <h3>{item.name}</h3>
               <p className="price">
-                ₹{item.price} <span className="old-price">₹{item.oldPrice}</span>
+                {item.price} <span className="old-price">{item.oldPrice}</span>
               </p>
               <p className="discount">{item.discount}</p>
             </div>

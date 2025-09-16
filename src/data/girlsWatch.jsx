@@ -34,16 +34,16 @@ import EmporioAR1143B from "../assets/Emporio Arman_i AR1143 - J1455 - Copy.png"
 import Emporio2323 from "../assets/Empori o Arman_i For her 2323 white dial - Copy.png";
 
 const girlsWatches = [
-  { name: "Role_x Oyster Perpetual Date", image: RolexOyster, price: "₹2999" },
+  { name: "Role_x Oyster Perpetual Date", image: RolexOyster, price: "₹1999" },
   { name: "ROLE X_FOR HER 2284", image: Rolex2284, price: "₹1000" },
-  { name: "Rad_o diastar open heart", image: RadoDiastar, price: "₹2799" },
+  { name: "Rad_o diastar open heart", image: RadoDiastar, price: "₹1799" },
   { name: "Omeg a Seamaster Aqua Terra Blue Japanese Automatic 2298", image: OmegaSeamaster, price: "₹1399" },
   { name: "WOMENWATCH78", image: WomenWatch78, price: "₹2400" },
   { name: "Tommy_Hilfiger Decker - J1458", image: TommyHilfiger, price: "₹1850" },
   { name: "JUST CAVALLI FOR HER 2264", image: JustCavalli2264, price: "₹2500" },
-  { name: "JUST CAVALLI FOR HER 2263 ", image: JustCavalli2263, price: "₹3,000" },
+  { name: "JUST CAVALLI FOR HER 2263 ", image: JustCavalli2263, price: "₹2500" },
   { name: "JUST CAVALLI FOR HER 2262", image: JustCavalli2262, price: "₹1,000" },
-  { name: "FOSSI_L WATCH FOR HER 2283", image: Fossil2283, price: "₹4,500" },
+  { name: "FOSSI_L WATCH FOR HER 2283", image: Fossil2283, price: "₹1,500" },
   { name: "Fossi l Grant Skeleton Automatic (SilverGreen)", image: FossilGrant, price: "₹2,000" },
   { name: "Emporio Arman_i_For her 2314", image: Emporio2314, price: "₹3,000" },
   { name: "Emporio Arman_i For her_2311 ", image: Emporio2311, price: "₹2,000" },
@@ -60,7 +60,7 @@ const girlsWatches = [
   { name: "Emporio Arman_i For her 2310", image: Emporio2310, price: "₹2,800" },
   { name: "Emporio Arman_i For her 231 6 ", image: Emporio2316Copy, price: "₹2,500" },
   { name: "Emporio Arman_i AR1143 - J1456 ", image: EmporioAR1143A, price: "₹3,000" },
-  { name: "Emporio Arman_i AR1143 - J1455", image: EmporioAR1143B, price: "₹3,500" },
+  { name: "Emporio Arman_i AR1143 - J1455", image: EmporioAR1143B, price: "₹2,500" },
   { name: "Empori o Arman_i For her 2323 white dial", image: Emporio2323, price: "₹3,000" },
 ];
 
@@ -99,7 +99,7 @@ const GirlsWatch = () => {
 
             <div className="detail-right">
               <h2>{selectedWatch.name}</h2>
-              <p className="price">₹{selectedWatch.price}</p>
+              <p className="price">{selectedWatch.price}</p>
               <p>Shipping calculated at checkout.</p>
 
               <div className="size-selector">
@@ -140,7 +140,7 @@ const GirlsWatch = () => {
                   >
                     <img src={item.image} alt={item.name} />
                     <p className="related-name">{item.name}</p>
-                    <p className="related-price">₹{item.price}</p>
+                    <p className="related-price">{item.price}</p>
                   </div>
                 ))}
               </div>
@@ -167,7 +167,7 @@ const GirlsWatch = () => {
           >
             <img src={watch.image} alt={watch.name} className="product-image" />
             <h3 className="product-name">{watch.name}</h3>
-            <p className="product-price">₹{watch.price}</p>
+            <p className="product-price">{watch.price}</p>
           </div>
         ))}
       </div>

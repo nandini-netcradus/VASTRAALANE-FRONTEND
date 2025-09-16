@@ -38,7 +38,7 @@ const products = [
   { id: 8, name: "Hublo t big bang classic Luxury", image: Hublot1, price: 1983.00, oldPrice: 3999, category: "Luxury" },
   { id: 9, name: "HUBLO_T BIGBANG UNICO Premium", image: Hublot2, price: 1999, oldPrice: 2999, category: "Premium" },
   { id: 10, name: "Omeg a Seamaster Aqua Terra Luxury", image: Omega1, price: 2999, oldPrice: 3799, category: "Luxury" },
-  { id: 11, name: "OMEG A SPEEDMASTER MOONWATCH Luxury", image: Omega2, price: 899, oldPrice: 3999, category: "Luxury" },
+  { id: 11, name: "OMEG A SPEEDMASTER MOONWATCH Luxury", image: Omega2, price: 1899, oldPrice: 3999, category: "Luxury" },
   { id: 12, name: "OMEG A SPEEDMASTER PILOT AUTO Premium", image: Omega3, price: 1929, oldPrice: 4999, category: "Premium" },
   { id: 13, name: "Panerai Radiomir California Exclusive", image: Panerai, price: 1199, oldPrice: 5999, category: "Exclusive" },
   { id: 14, name: "patek_philippe_nautilus_2342 Luxury", image: Patek1, price: 1499, oldPrice: 6999, category: "Luxury" },

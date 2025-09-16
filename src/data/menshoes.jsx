@@ -71,7 +71,7 @@ const menshoes = [
   { id: 3, name: "ADIDAS", price: 12000, oldPrice: 1300, discount: "7% off", image: ADIDAS },
   { id: 4, name: "Adidass_Fear_Of_God_Athletic_1_Indiana", price: 1800, oldPrice: 20000, discount: "10% off", image: Adidass_Fear_Of_God_Athletic_1_Indiana },
   { id: 5, name: "Adidass_Yeezy_350_V2_Bone_White_SEMI_UA_With_All_Accesories_Copy_2", price: 2000, oldPrice: 22000, discount: "9% off", image: Adidass_Yeezy_350_V2_Bone_White_SEMI_UA_With_All_Accesories_Copy_2 },
-  { id: 6, name: "Adidass_Yeezy_Boost_350_V2_Beluga_SEMI_UA_With_All_Accesories", price: 210, oldPrice: 23000, discount: "8% off", image: Adidass_Yeezy_Boost_350_V2_Beluga_SEMI_UA_With_All_Accesories },
+  { id: 6, name: "Adidass_Yeezy_Boost_350_V2_Beluga_SEMI_UA_With_All_Accesories", price: 2110, oldPrice: 23000, discount: "8% off", image: Adidass_Yeezy_Boost_350_V2_Beluga_SEMI_UA_With_All_Accesories },
   { id: 7, name: "Adidass_Yeezy_Boost_350_V2_Oreo_SEMI_UA_With_All_Accesories_Copy_2", price: 2150, oldPrice: 23500, discount: "8.5% off", image: Adidass_Yeezy_Boost_350_V2_Oreo_SEMI_UA_With_All_Accesories_Copy_2 },
   { id: 8, name: "Airforce_1_milky_white_pure_leather_Copy", price: 1200, oldPrice: 12500, discount: "4% off", image: Airforce_1_milky_white_pure_leather_Copy },
   { id: 9, name: "ALEXANDER_MCQUEEN_PREMIUM_WHITE_SNEAKER", price: 2500, oldPrice: 27000, discount: "7% off", image: ALEXANDER_MCQUEEN_PREMIUM_WHITE_SNEAKER },
