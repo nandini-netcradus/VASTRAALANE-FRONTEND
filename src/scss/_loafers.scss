@@ -148,4 +148,14 @@
 }
 
 
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .product-detail-expanded {
+    grid-template-columns: 1fr;
+    text-align: center;
 
+    .product-detail-right {
+      margin-top: 20px;
+    }
+  }
+}

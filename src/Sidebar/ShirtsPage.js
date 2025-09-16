@@ -38,123 +38,39 @@ import DiorWhite from "../assets/Christian Dio r White Premium Imported Japanese
 
 // 🔽 Products array
 const tshirts = [
-  { id: 1, name: "Versace Couture Petrol Blue Back Print Imported Polo T-Shirt", price: "₹2,500", oldPrice: "₹3,000", discount: "17% off", image: VersaceBlue },
-  { id: 2, name: "Versace Couture Olive Back Print Imported Polo T-Shirt", price: "₹2,600", oldPrice: "₹3,200", discount: "19% off", image: VersaceOlive },
-  { id: 3, name: "Tommy Hilfiger T-Shirt 2", price: "₹1,200", oldPrice: "₹1,500", discount: "20% off", image: Tshirt2 },
+  { id: 1, name: "Versace Couture Petrol Blue Back Print Imported Polo T-Shirt", price: "₹1740", oldPrice: "₹3,000", discount: "17% off", image: VersaceBlue },
+  { id: 2, name: "Versace Couture Olive Back Print Imported Polo T-Shirt", price: "₹1800", oldPrice: "₹3,200", discount: "19% off", image: VersaceOlive },
+  { id: 3, name: "Tommy Hilfiger T-Shirt 2", price: "₹1180", oldPrice: "₹1,500", discount: "20% off", image: Tshirt2 },
   { id: 4, name: "Tommy Hilfiger T-Shirt 1", price: "₹1,300", oldPrice: "₹1,600", discount: "19% off", image: Tshirt1 },
-  { id: 5, name: "Tommy Hilfiger Teal Polo", price: "₹3,000", oldPrice: "₹3,500", discount: "14% off", image: TommyTeal },
-  { id: 6, name: "Tommy Hilfiger Off-white", price: "₹3,100", oldPrice: "₹3,600", discount: "14% off", image: TommyOffwhite },
-  { id: 7, name: "Tommy Hilfiger Navy Polo", price: "₹3,200", oldPrice: "₹3,700", discount: "14% off", image: TommyNavy },
-  { id: 8, name: "Tommy Hilfiger Premium White", price: "₹2,800", oldPrice: "₹3,200", discount: "13% off", image: TommyWhite },
-  { id: 9, name: "Tommy Hilfiger Premium Black", price: "₹2,900", oldPrice: "₹3,300", discount: "12% off", image: TommyBlack },
-  { id: 10, name: "Ralph Lauren Polo Pink Shirt", price: "₹3,400", oldPrice: "₹4,000", discount: "15% off", image: RalphPink },
-  { id: 11, name: "Ralph Lauren Polo Mustard Shirt", price: "₹3,450", oldPrice: "₹4,100", discount: "16% off", image: RalphMustard },
-  { id: 12, name: "Ralph Lauren Polo Black Shirt", price: "₹3,500", oldPrice: "₹4,200", discount: "17% off", image: RalphBlack },
-  { id: 13, name: "Ralph Lauren Cotton Wine Shirt", price: "₹3,550", oldPrice: "₹4,300", discount: "17% off", image: RalphWine },
+  { id: 5, name: "Tommy Hilfiger Teal Polo", price: "₹2700", oldPrice: "₹3,500", discount: "14% off", image: TommyTeal },
+  { id: 6, name: "Tommy Hilfiger Off-white", price: "₹1799.00", oldPrice: "₹3,600", discount: "14% off", image: TommyOffwhite },
+  { id: 7, name: "Tommy Hilfiger Navy Polo", price: "₹1799.0", oldPrice: "₹3,700", discount: "14% off", image: TommyNavy },
+  { id: 8, name: "Tommy Hilfiger Premium White", price: "₹1740.00", oldPrice: "₹3,200", discount: "13% off", image: TommyWhite },
+  { id: 9, name: "Tommy Hilfiger Premium Black", price: "₹1895.0", oldPrice: "₹3,300", discount: "12% off", image: TommyBlack },
+  { id: 10, name: "Ralph Lauren Polo Pink Shirt", price: "₹1289.0", oldPrice: "₹4,000", discount: "15% off", image: RalphPink },
+  { id: 11, name: "Ralph Lauren Polo Mustard Shirt", price: "₹1450", oldPrice: "₹4,100", discount: "16% off", image: RalphMustard },
+  { id: 12, name: "Ralph Lauren Polo Black Shirt", price: "₹1500", oldPrice: "₹4,200", discount: "17% off", image: RalphBlack },
+  { id: 13, name: "Ralph Lauren Cotton Wine Shirt", price: "₹1650", oldPrice: "₹4,300", discount: "17% off", image: RalphWine },
   { id: 14, name: "Ralph Lauren Cotton White Shirt", price: "₹3,600", oldPrice: "₹4,350", discount: "17% off", image: RalphWhite },
-  { id: 15, name: "Ralph Lauren Cotton Milange Shirt", price: "₹3,650", oldPrice: "₹4,400", discount: "17% off", image: RalphMilange },
-  { id: 16, name: "Ralph Lauren Cotton Black Shirt", price: "₹3,700", oldPrice: "₹4,450", discount: "17% off", image: RalphCottonBlack },
-  { id: 17, name: "Lacoste White Premium Polo", price: "₹3,300", oldPrice: "₹4,000", discount: "18% off", image: LacosteWhite1 },
-  { id: 18, name: "Lacoste White Shoulder Strip Polo", price: "₹3,350", oldPrice: "₹4,050", discount: "17% off", image: LacosteWhite2 },
-  { id: 19, name: "Lacoste Sky Premium Polo", price: "₹3,400", oldPrice: "₹4,100", discount: "17% off", image: LacosteSky },
-  { id: 20, name: "Lacoste Offwhite Premium Polo", price: "₹3,450", oldPrice: "₹4,150", discount: "17% off", image: LacosteOffwhite },
-  { id: 21, name: "Lacoste Navy Premium Polo", price: "₹3,500", oldPrice: "₹4,200", discount: "17% off", image: LacosteNavy },
-  { id: 22, name: "Lacoste Maroon Premium Polo", price: "₹3,550", oldPrice: "₹4,250", discount: "17% off", image: LacosteMaroon },
-  { id: 23, name: "Lacoste Black Premium Polo", price: "₹3,600", oldPrice: "₹4,300", discount: "17% off", image: LacosteBlack },
-  { id: 24, name: "Lacoste Beige Premium Polo", price: "₹3,650", oldPrice: "₹4,350", discount: "16% off", image: LacosteBeige },
-  { id: 25, name: "Gucci White Premium T-Shirt", price: "₹4,000", oldPrice: "₹4,600", discount: "13% off", image: GucciWhite },
-  { id: 26, name: "Gucci Monogram White Shirt", price: "₹4,200", oldPrice: "₹4,800", discount: "12% off", image: GucciWhiteShirt },
-  { id: 27, name: "Gucci Monogram Black Shirt", price: "₹4,250", oldPrice: "₹4,900", discount: "13% off", image: GucciBlackShirt1 },
-  { id: 28, name: "Gucci Black Premium T-Shirt", price: "₹4,350", oldPrice: "₹5,000", discount: "13% off", image: GucciBlackTshirt },
-  { id: 29, name: "Gucci Beige Premium T-Shirt", price: "₹4,400", oldPrice: "₹5,050", discount: "13% off", image: GucciBeigeTshirt },
-  { id: 30, name: "Dolce & Gabbana White Premium Shirt", price: "₹4,500", oldPrice: "₹5,200", discount: "13% off", image: DolceWhite },
-  { id: 31, name: "Dolce & Gabbana Black Premium Shirt", price: "₹4,550", oldPrice: "₹5,250", discount: "13% off", image: DolceBlack1 },
-  { id: 32, name: "Christian Dior White Premium Shirt", price: "₹4,700", oldPrice: "₹5,400", discount: "13% off", image: DiorWhite },
+  { id: 15, name: "Ralph Lauren Cotton Milange Shirt", price: "₹2,650", oldPrice: "₹4,400", discount: "17% off", image: RalphMilange },
+  { id: 16, name: "Ralph Lauren Cotton Black Shirt", price: "₹1,700", oldPrice: "₹4,450", discount: "17% off", image: RalphCottonBlack },
+  { id: 17, name: "Lacoste White Premium Polo", price: "₹2,300", oldPrice: "₹4,000", discount: "18% off", image: LacosteWhite1 },
+  { id: 18, name: "Lacoste White Shoulder Strip Polo", price: "₹1,350", oldPrice: "₹4,050", discount: "17% off", image: LacosteWhite2 },
+  { id: 19, name: "Lacoste Sky Premium Polo", price: "₹1,400", oldPrice: "₹4,100", discount: "17% off", image: LacosteSky },
+  { id: 20, name: "Lacoste Offwhite Premium Polo", price: "₹1,450", oldPrice: "₹4,150", discount: "17% off", image: LacosteOffwhite },
+  { id: 21, name: "Lacoste Navy Premium Polo", price: "₹1789.00", oldPrice: "₹4,200", discount: "17% off", image: LacosteNavy },
+  { id: 22, name: "Lacoste Maroon Premium Polo", price: "₹1789.0", oldPrice: "₹4,250", discount: "17% off", image: LacosteMaroon },
+  { id: 23, name: "Lacoste Black Premium Polo", price: "₹1599.0", oldPrice: "₹4,300", discount: "17% off", image: LacosteBlack },
+  { id: 24, name: "Lacoste Beige Premium Polo", price: "₹1999.0", oldPrice: "₹4,350", discount: "16% off", image: LacosteBeige },
+  { id: 25, name: "Gucci White Premium T-Shirt", price: "₹1479.0", oldPrice: "₹4,600", discount: "13% off", image: GucciWhite },
+  { id: 26, name: "Gucci Monogram White Shirt", price: "₹1899.0", oldPrice: "₹4,800", discount: "12% off", image: GucciWhiteShirt },
+  { id: 27, name: "Gucci Monogram Black Shirt", price: "₹1489.0", oldPrice: "₹4,900", discount: "13% off", image: GucciBlackShirt1 },
+  { id: 28, name: "Gucci Black Premium T-Shirt", price: "₹1589.0", oldPrice: "₹5,000", discount: "13% off", image: GucciBlackTshirt },
+  { id: 29, name: "Gucci Beige Premium T-Shirt", price: "₹1499.0", oldPrice: "₹5,050", discount: "13% off", image: GucciBeigeTshirt },
+  { id: 30, name: "Dolce & Gabbana White Premium Shirt", price: "₹1799.00", oldPrice: "₹5,200", discount: "13% off", image: DolceWhite },
+  { id: 31, name: "Dolce & Gabbana Black Premium Shirt", price: "₹1150", oldPrice: "₹5,250", discount: "13% off", image: DolceBlack1 },
+  { id: 32, name: "Christian Dior White Premium Shirt", price: "₹1700", oldPrice: "₹5,400", discount: "13% off", image: DiorWhite },
 ];
-
-// const ShirtsPage = () => {
-//   const [selectedProduct, setSelectedProduct] = useState(null);
-
-//   const handleProductClick = (prod) => {
-//     setSelectedProduct(prod);
-//   };
-
-//   const handleBack = () => {
-//     setSelectedProduct(null);
-//   };
-
-//   const relatedProducts = selectedProduct
-//     ? tshirts.filter((p) => p.id !== selectedProduct.id)
-//     : [];
-
-//   return (
-//     <div className="category-page">
-//       <main className="products-section">
-//         {!selectedProduct ? (
-//           <>
-//             <h2 className="page-title">Shirts & T-Shirts Collection</h2>
-//             <div className="products-grid">
-//               {tshirts.map((prod) => (
-//                 <div
-//                   key={prod.id}
-//                   className="product-card"
-//                   onClick={() => handleProductClick(prod)}
-//                   style={{ cursor: "pointer" }}
-//                 >
-//                   <div className="product-image">
-//                     <img src={prod.image} alt={prod.name} />
-//                   </div>
-//                   <div className="product-info">
-//                     <h4>{prod.name}</h4>
-//                     <p className="old-price">{prod.oldPrice}</p>
-//                     <p className="current-price">{prod.price}</p>
-//                     <p className="discount">{prod.discount}</p>
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//           </>
-//         ) : (
-//           <div className="product-details-page">
-//             <button className="back-btn" onClick={handleBack}>
-//               &larr; Back
-//             </button>
-//             <div className="main-product">
-//               <img src={selectedProduct.image} alt={selectedProduct.name} />
-//               <h2>{selectedProduct.name}</h2>
-//               <p className="old-price">{selectedProduct.oldPrice}</p>
-//               <p className="current-price">{selectedProduct.price}</p>
-//               <p className="discount">{selectedProduct.discount}</p>
-//             </div>
-
-//             {relatedProducts.length > 0 && (
-//               <>
-//                 <h3>Related Products</h3>
-//                 <div className="related-products-grid">
-//                   {relatedProducts.map((p) => (
-//                     <div
-//                       key={p.id}
-//                       className="related-product-card"
-//                       onClick={() => handleProductClick(p)}
-//                       style={{ cursor: "pointer" }}
-//                     >
-//                       <img src={p.image} alt={p.name} />
-//                       <h4>{p.name}</h4>
-//                       <p className="current-price">{p.price}</p>
-//                     </div>
-//                   ))}
-//                 </div>
-//               </>
-//             )}
-//           </div>
-//         )}
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default ShirtsPage;
-
 
 const ShirtsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);

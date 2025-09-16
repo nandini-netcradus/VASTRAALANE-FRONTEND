@@ -25,26 +25,26 @@ import ZaraBlack from "../assets/Zar a Black Premium Knitted Classic Cord Set.pn
 
 // ✅ Tracksuit Array
 const tracksuits = [
-  { id: 1, name: "Adidas Red Logo Print Premium Imported Tracksuit", price: 15000, oldPrice: 16000, discount: "6% off", image: AdidasRedLogo },
-  { id: 2, name: "Air Jordan Black Premium Oversized Cord Set", price: 18000, oldPrice: 20000, discount: "10% off", image: AirJordanBlack },
-  { id: 3, name: "Air Jordan Cream Premium Oversized Cord Set", price: 18000, oldPrice: 20000, discount: "10% off", image: AirJordanCream },
-  { id: 4, name: "Air Jordan Navy Blue Premium Oversized Cord Set", price: 18000, oldPrice: 20000, discount: "10% off", image: AirJordanNavy },
-  { id: 5, name: "Armani Exchange White Embroidered Patch Logo Eagle Edition Imported Fabric Tracksuit", price: 22000, oldPrice: 24000, discount: "8% off", image: ArmaniExchangeWhite },
-  // { id: 6, name: "Asics Gel Kayano 31 Rich Navy Spicy", price: 14000, oldPrice: 15000, discount: "6% off", image: AsicsGel },
-  { id: 7, name: "Balmain Paris Black Premium Imported Japanese Fabric Monogram Printed Tracksuit", price: 25000, oldPrice: 27000, discount: "7% off", image: BalmainBlack },
-  { id: 8, name: "Balmain Paris Navy Premium Imported Japanese Fabric Monogram Printed Tracksuit", price: 25000, oldPrice: 27000, discount: "7% off", image: BalmainNavy },
-  { id: 9, name: "Balmain Paris White Premium Imported Japanese Fabric Monogram Printed Tracksuit", price: 25000, oldPrice: 27000, discount: "7% off", image: BalmainWhite },
-  { id: 10, name: "Boss Dark Grey Embroidered Logo Design with Jacquard Fabric Premium Tracksuit", price: 18000, oldPrice: 20000, discount: "10% off", image: BossDarkGrey },
-  { id: 11, name: "Burberry White Embroidered Logo Imported Fabric Tracksuit", price: 22000, oldPrice: 24000, discount: "8% off", image: BurberryWhite },
-  { id: 12, name: "Diesel Beige Back Print Premium Oversized Cord Set", price: 17000, oldPrice: 18000, discount: "6% off", image: DieselBeige },
-  { id: 13, name: "Diesel Cream Back Print Premium Oversized Cord Set", price: 17000, oldPrice: 18000, discount: "6% off", image: DieselCream },
-  { id: 14, name: "Diesel Green Back Print Premium Oversized Cord Set", price: 17000, oldPrice: 18000, discount: "6% off", image: DieselGreen },
+  { id: 1, name: "Adidas Red Logo Print Premium Imported Tracksuit", price: 2500, oldPrice: 3000, discount: "6% off", image: AdidasRedLogo },
+  { id: 2, name: "Air Jordan Black Premium Oversized Cord Set", price: 1500, oldPrice: 2000, discount: "10% off", image: AirJordanBlack },
+  { id: 3, name: "Air Jordan Cream Premium Oversized Cord Set", price: 1800, oldPrice: 2000, discount: "10% off", image: AirJordanCream },
+  { id: 4, name: "Air Jordan Navy Blue Premium Oversized Cord Set", price: 1800, oldPrice: 2000, discount: "10% off", image: AirJordanNavy },
+  { id: 5, name: "Armani Exchange White Embroidered Patch Logo Eagle Edition Imported Fabric Tracksuit", price: 2200, oldPrice: 2400, discount: "8% off", image: ArmaniExchangeWhite },
+  
+  { id: 7, name: "Balmain Paris Black Premium Imported Japanese Fabric Monogram Printed Tracksuit", price: 2500, oldPrice: 2700, discount: "7% off", image: BalmainBlack },
+  { id: 8, name: "Balmain Paris Navy Premium Imported Japanese Fabric Monogram Printed Tracksuit", price: 2500, oldPrice: 2700, discount: "7% off", image: BalmainNavy },
+  { id: 9, name: "Balmain Paris White Premium Imported Japanese Fabric Monogram Printed Tracksuit", price: 2500, oldPrice: 2700, discount: "7% off", image: BalmainWhite },
+  { id: 10, name: "Boss Dark Grey Embroidered Logo Design with Jacquard Fabric Premium Tracksuit", price: 1800, oldPrice: 2000, discount: "10% off", image: BossDarkGrey },
+  { id: 11, name: "Burberry White Embroidered Logo Imported Fabric Tracksuit", price: 2200, oldPrice: 2400, discount: "8% off", image: BurberryWhite },
+  { id: 12, name: "Diesel Beige Back Print Premium Oversized Cord Set", price: 2999.00, oldPrice: 4000, discount: "6% off", image: DieselBeige },
+  { id: 13, name: "Diesel Cream Back Print Premium Oversized Cord Set", price: 2000, oldPrice: 4000, discount: "6% off", image: DieselCream },
+  { id: 14, name: "Diesel Green Back Print Premium Oversized Cord Set", price: 3000, oldPrice: 5000, discount: "6% off", image: DieselGreen },
   // { id: 15, name: "Gucci GG Monogram Canvas Leather Espadrilles Khakhi", price: 30000, oldPrice: 32000, discount: "6% off", image: GucciKhakhi },
-  { id: 16, name: "HoodRich Grey Embroidery Logo Imported Tracksuit", price: 16000, oldPrice: 17000, discount: "6% off", image: HoodRichGrey },
-  { id: 17, name: "Louis Vuitton Black Beige Monogram Imported Premium Tracksuit", price: 40000, oldPrice: 42000, discount: "5% off", image: LouisVuittonBlackBeige },
-  { id: 18, name: "Louis Vuitton Black White Monogram Imported Premium Tracksuit", price: 40000, oldPrice: 42000, discount: "5% off", image: LouisVuittonBlackWhite },
-  { id: 19, name: "Louis Vuitton White Monogram Imported Premium Tracksuit", price: 40000, oldPrice: 42000, discount: "5% off", image: LouisVuittonWhite },
-  { id: 20, name: "Zara Black Premium Knitted Classic Cord Set", price: 14000, oldPrice: 15000, discount: "6% off", image: ZaraBlack },
+  { id: 16, name: "HoodRich Grey Embroidery Logo Imported Tracksuit", price:6000, oldPrice: 7000, discount: "6% off", image: HoodRichGrey },
+  { id: 17, name: "Louis Vuitton Black Beige Monogram Imported Premium Tracksuit", price: 2999.00, oldPrice: 4000, discount: "5% off", image: LouisVuittonBlackBeige },
+  { id: 18, name: "Louis Vuitton Black White Monogram Imported Premium Tracksuit", price: 1970.00, oldPrice: 2000, discount: "5% off", image: LouisVuittonBlackWhite },
+  { id: 19, name: "Louis Vuitton White Monogram Imported Premium Tracksuit", price: 4000, oldPrice: 4200, discount: "5% off", image: LouisVuittonWhite },
+  { id: 20, name: "Zara Black Premium Knitted Classic Cord Set", price: 1400, oldPrice: 1500, discount: "6% off", image: ZaraBlack },
 ];
 
 const Tracksuits = () => {
@@ -131,27 +131,6 @@ const Tracksuits = () => {
           </div>
         </div>
       </div>
-
-      {/* ✅ Related Items Section */}
-      {/* <div className="related-items">
-        <h3>Related Tracksuits</h3>
-        <div className="related-grid">
-          {tracksuits
-            .filter((item) => item.id !== selectedProduct.id)
-            .slice(0, 5)
-            .map((item) => (
-              <div
-                key={item.id}
-                className="related-card"
-                onClick={() => setSelectedProduct(item)}
-              >
-                <img src={item.image} alt={item.name} />
-                <p className="name">{item.name}</p>
-                <p className="price">₹{item.price}</p>
-              </div>
-            ))}
-        </div>
-      </div> */}
     </div>
   );
 };

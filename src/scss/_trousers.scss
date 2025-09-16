@@ -379,10 +379,53 @@
     transform: translateY(-20px);
   }
 }
-
-/* Responsive */
+/* ---------- Responsive: Tablets ---------- */
 @media (max-width: 768px) {
-  .detail-content {
-    flex-direction: column;
+  .trousers-page {
+    padding: 20px;
+
+    .trousers-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .related-items .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
   }
 }
+
+/* ---------- Responsive: Mobiles ---------- */
+@media (max-width: 480px) {
+  .trousers-page {
+    padding: 15px;
+
+    .page-title {
+      font-size: 20px;
+    }
+
+    /* 🔹 Main Trousers Grid - 2 columns, only 2 rows */
+    .trousers-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px;
+
+      .trousers-card {
+        img {
+          height: 150px; /* adjust image height for mobile */
+        }
+        h3 {
+          font-size: 13px;
+        }
+        .price {
+          font-size: 13px;
+
+          .old-price {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    }
+
+  }
