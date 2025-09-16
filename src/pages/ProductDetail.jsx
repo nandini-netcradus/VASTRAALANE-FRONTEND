@@ -1,6 +1,4 @@
-
 import React, { useState } from "react";
-
 import "../scss/_productDetail.scss";
 import { useCart } from "../context/CartContext";
 
@@ -58,56 +56,178 @@ export const products = [
 
  ];
 
+// const ProductDetail = () => {
+//   const [selectedProduct, setSelectedProduct] = useState(null);
+//   const [selectedSize, setSelectedSize] = useState(6);
+//   const [quantity, setQuantity] = useState(1);
+//   const { cart, addToCart } = useCart();
+
+
+//   const handleAddToCart = () => {
+//   if (!selectedProduct) return;
+
+//   const cartItem = {
+//     ...selectedProduct,
+//     size: selectedSize,
+//     quantity: Number(quantity),
+//     image: selectedProduct.image,
+//   };
+
+//   // ✅ Add to cart via context
+//   addToCart(cartItem);
+
+//   // ✅ Optional: 3 sec popup is already in CartContext
+//   console.log("Cart before add:", cart); // Debug: current cart items
+//   console.log("Added product:", cartItem); // Debug: added product
+// };
+
+    
+//   return (
+//     <div className="product-section">
+//       <h2>Your City's Best Deals Handpicked for you</h2>
+
+//       {/* ✅ Product Grid */}
+//       <div className="product-grid">
+//         {products.map((product, index) => (
+//           <div
+//             key={index}
+//             className="product-card"
+//             onClick={() => setSelectedProduct(product)}
+//           >
+//             <img src={product.image} alt={product.name} className="product-image" />
+//             <h3 className="product-name">{product.name}</h3>
+//             <p className="product-category">{product.category}</p>
+//             <p className="product-price">₹{product.price}</p>
+//           </div>
+//         ))}
+//       </div>
+
+//       {/* ✅ Product Detail Section */}
+//       {selectedProduct && (
+//         <div className="product-detail-expanded">
+//           {/* ✅ Left side – Image */}
+//           <div className="product-detail-left">
+//             <img
+//               src={selectedProduct.image}
+//               alt={selectedProduct.name}
+//               className="product-image-large"
+//             />
+//           </div>
+
+//           {/* ✅ Right side – Details + Buttons */}
+//           <div className="product-detail-right">
+//             <h2 className="product-name">{selectedProduct.name}</h2>
+//             <p className="product-price">₹{selectedProduct.price}</p>
+//             <p className="product-shipping">Shipping calculated at checkout.</p>
+             
+//               {/* Product Extra Details */}
+//               <div className="product-extra-details">
+//                 <h3>Product Details</h3>
+//                 <ul>
+//                   <li>✅ 100% Original & Premium Quality</li>
+//                   <li>✅ Free Shipping on orders above ₹999</li>
+//                   <li>✅ Easy 7-Day Return & Exchange Policy</li>
+//                   <li>✅ Cash on Delivery (COD) Available</li>
+//                   <li>✅ Secure Payment Options</li>
+//                   </ul>
+//                   </div>
+//             {/* ✅ Size Selector */}
+//             <div className="product-options">
+//               <label htmlFor="size">Size:</label>
+//               <select
+//                 id="size"
+//                 value={selectedSize}
+//                 onChange={(e) => setSelectedSize(e.target.value)}
+//               >
+//                 {[6, 7, 8, 9, 10, 11].map((size) => (
+//                   <option key={size} value={size}>
+//                     {size}
+//                   </option>
+//                 ))}
+//               </select>
+//             </div>
+
+//             {/* ✅ Quantity Selector */}
+//             <div className="product-quantity">
+//               <label htmlFor="quantity">Quantity:</label>
+//               <input
+//                 type="number"
+//                 id="quantity"
+//                 min="1"
+//                 value={quantity}
+//                 onChange={(e) => setQuantity(e.target.value)}
+//               />
+//             </div>
+
+//             {/* ✅ Action Buttons */}
+//             <div className="product-actions">
+//               <button className="btn-add-cart" onClick={handleAddToCart}>
+//                 Add to Cart
+//               </button>
+//               <button className="btn-buy-now">Buy Now</button>
+//               <button className="btn-wishlist">Add to Wishlist</button>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default ProductDetail;
+
+
 const ProductDetail = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState(6);
   const [quantity, setQuantity] = useState(1);
   const { cart, addToCart } = useCart();
 
-
   const handleAddToCart = () => {
-  if (!selectedProduct) return;
+    if (!selectedProduct) return;
 
-  const cartItem = {
-    ...selectedProduct,
-    size: selectedSize,
-    quantity: Number(quantity),
-    image: selectedProduct.image,
+    const cartItem = {
+      ...selectedProduct,
+      size: selectedSize,
+      quantity: Number(quantity),
+      image: selectedProduct.image,
+    };
+
+    addToCart(cartItem);
+
+    console.log("Cart before add:", cart);
+    console.log("Added product:", cartItem);
   };
 
-  // ✅ Add to cart via context
-  addToCart(cartItem);
-
-  // ✅ Optional: 3 sec popup is already in CartContext
-  console.log("Cart before add:", cart); // Debug: current cart items
-  console.log("Added product:", cartItem); // Debug: added product
-};
-
-    
   return (
     <div className="product-section">
-      <h2>Your City's Best Deals Handpicked for you</h2>
-
-      {/* ✅ Product Grid */}
-      <div className="product-grid">
-        {products.map((product, index) => (
-          <div
-            key={index}
-            className="product-card"
-            onClick={() => setSelectedProduct(product)}
-          >
-            <img src={product.image} alt={product.name} className="product-image" />
-            <h3 className="product-name">{product.name}</h3>
-            <p className="product-category">{product.category}</p>
-            <p className="product-price">₹{product.price}</p>
+      {/* ✅ Agar product select nahi hai → Grid dikhao */}
+      {!selectedProduct ? (
+        <>
+          <h2>Your City's Best Deals Handpicked for you</h2>
+          <div className="product-grid">
+            {products.map((product, index) => (
+              <div
+                key={index}
+                className="product-card"
+                onClick={() => setSelectedProduct(product)}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="product-image"
+                />
+                <h3 className="product-name">{product.name}</h3>
+                <p className="product-category">{product.category}</p>
+                <p className="product-price">₹{product.price}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      {/* ✅ Product Detail Section */}
-      {selectedProduct && (
+        </>
+      ) : (
+        /* ✅ Agar product select hai → Detail Page dikhao */
         <div className="product-detail-expanded">
-          {/* ✅ Left side – Image */}
+          {/* Left side – Image */}
           <div className="product-detail-left">
             <img
               src={selectedProduct.image}
@@ -116,24 +236,25 @@ const ProductDetail = () => {
             />
           </div>
 
-          {/* ✅ Right side – Details + Buttons */}
+          {/* Right side – Details */}
           <div className="product-detail-right">
             <h2 className="product-name">{selectedProduct.name}</h2>
             <p className="product-price">₹{selectedProduct.price}</p>
             <p className="product-shipping">Shipping calculated at checkout.</p>
-             
-              {/* Product Extra Details */}
-              <div className="product-extra-details">
-                <h3>Product Details</h3>
-                <ul>
-                  <li>✅ 100% Original & Premium Quality</li>
-                  <li>✅ Free Shipping on orders above ₹999</li>
-                  <li>✅ Easy 7-Day Return & Exchange Policy</li>
-                  <li>✅ Cash on Delivery (COD) Available</li>
-                  <li>✅ Secure Payment Options</li>
-                  </ul>
-                  </div>
-            {/* ✅ Size Selector */}
+
+            {/* Extra details */}
+            <div className="product-extra-details">
+              <h3>Product Details</h3>
+              <ul>
+                <li>✅ 100% Original & Premium Quality</li>
+                <li>✅ Free Shipping on orders above ₹999</li>
+                <li>✅ Easy 7-Day Return & Exchange Policy</li>
+                <li>✅ Cash on Delivery (COD) Available</li>
+                <li>✅ Secure Payment Options</li>
+              </ul>
+            </div>
+
+            {/* Size Selector */}
             <div className="product-options">
               <label htmlFor="size">Size:</label>
               <select
@@ -149,7 +270,7 @@ const ProductDetail = () => {
               </select>
             </div>
 
-            {/* ✅ Quantity Selector */}
+            {/* Quantity Selector */}
             <div className="product-quantity">
               <label htmlFor="quantity">Quantity:</label>
               <input
@@ -161,13 +282,19 @@ const ProductDetail = () => {
               />
             </div>
 
-            {/* ✅ Action Buttons */}
+            {/* Action Buttons */}
             <div className="product-actions">
               <button className="btn-add-cart" onClick={handleAddToCart}>
                 Add to Cart
               </button>
               <button className="btn-buy-now">Buy Now</button>
               <button className="btn-wishlist">Add to Wishlist</button>
+              <button
+                className="btn-back"
+                onClick={() => setSelectedProduct(null)}
+              >
+                ⬅ Back to Products
+              </button>
             </div>
           </div>
         </div>

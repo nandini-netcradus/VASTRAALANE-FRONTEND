@@ -26,8 +26,8 @@ function Home() {
       {/* Pass function to Banner */}
       <Banner onShopNow={handleShopNow} />
       <ProductSlider />
-      <VideoSection />   {/* video below slider */}
-      <ProductDetail />  {/* ProductDetail section BELOW video */}
+      <VideoSection />   
+      <ProductDetail />  
     </div>
   );
 }

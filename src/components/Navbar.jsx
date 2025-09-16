@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import "../scss/_navbar.scss";
 import { FaBars, FaTimes, FaUser, FaShoppingCart } from "react-icons/fa";
@@ -27,19 +25,14 @@ const Navbar = () => {
 
         {/* ✅ Drawer ke andar icons */}
         <div className="drawer-icons">
-          {/* <FaSearch className="icon" /> */}
           <a href="/account"> <FaUser className="icon" /></a>
-          {/* <FaShoppingCart className="icon" /> */}
            <a href="/cart"> <FaShoppingCart className="icon" /></a>
         </div>
       </ul>
 
       {/* ✅ Desktop ke liye icons */}
       <div className="nav-icons">
-        {/* <FaSearch className="icon" /> */}
           <a href="/account"> <FaUser className="icon" /></a>
-        {/* <FaUser className="icon" /> */}
-        {/* <FaShoppingCart className="icon" /> */}
          <a href="/cart"> <FaShoppingCart className="icon" /></a>
       </div>
 

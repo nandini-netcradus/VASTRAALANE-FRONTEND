@@ -1,4 +1,3 @@
-
 import React from "react";
 import "../scss/_banner.scss";
 import shoesVideo from "../assets/SHOESVIDEO.mp4";

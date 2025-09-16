@@ -192,8 +192,8 @@ const NewArrivals = () => {
           <div className="detail-right">
             <h2>{selectedProduct.name}</h2>
             <p className="price">
-              ${selectedProduct.price}{" "}
-              <span className="old-price">${selectedProduct.oldPrice}</span>
+              ₹{selectedProduct.price}{" "}
+              <span className="old-price">₹{selectedProduct.oldPrice}</span>
             </p>
 
             <div className="size-selector">
@@ -248,8 +248,8 @@ const NewArrivals = () => {
           >
             <img src={item.image} alt={item.name} />
             <h3>{item.name}</h3>
-            <p className="old-price">${item.oldPrice}</p>
-            <p className="price">${item.price}</p>
+            <p className="old-price">₹{item.oldPrice}</p>
+            <p className="price">₹{item.price}</p>
           </div>
         ))}
       </div>
