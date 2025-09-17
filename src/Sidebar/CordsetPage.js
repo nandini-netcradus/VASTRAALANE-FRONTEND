@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_cordsetPage.scss";
+import { useCart } from "../context/CartContext";
 
 // ✅ Tracksuit Images
 import AdidasRedLogo from "../assets/Adida s Red Logo Print Premium Imported Tracksuit.png";
@@ -48,7 +49,34 @@ const tracksuits = [
 ];
 
 const Tracksuits = () => {
+  const { addToCart } = useCart();
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleAddToCart = () => {
+    if (!selectedProduct) return;
+    if (!selectedSize) {
+      alert("Please select a size before adding to cart!");
+      return;
+    }
+
+    const cartItem = {
+      ...selectedProduct,
+      size: selectedSize,
+      quantity: quantity,
+      image: selectedProduct.image,
+    };
+
+    addToCart(cartItem);
+    console.log("Added to cart:", cartItem);
+
+    // ✅ Show popup
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 2000);
+
+  };
 
   // ✅ Product List
   if (!selectedProduct) {
@@ -94,10 +122,15 @@ const Tracksuits = () => {
           <div className="size-options">
             <h4>Size:</h4>
             <div className="sizes">
-              <button>S</button>
-              <button>M</button>
-              <button>L</button>
-              <button>XL</button>
+              {["S", "M", "L", "XL"].map((size) => (
+                <button
+                  key={size}
+                  className={selectedSize === size ? "active" : ""}
+                  onClick={() => setSelectedSize(size)}
+                >
+                  {size}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -105,19 +138,27 @@ const Tracksuits = () => {
           <div className="quantity">
             <h4>Quantity:</h4>
             <div>
-              <button>-</button>
-              <input type="number" value={1} readOnly />
-              <button>+</button>
+              <button onClick={() => setQuantity((q) => Math.max(1, q - 1))}>
+                -
+              </button>
+              <input type="number" value={quantity} readOnly />
+              <button onClick={() => setQuantity((q) => q + 1)}>+</button>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="detail-actions">
             <button className="btn-wishlist">♡ Add to Wishlist</button>
-            <button className="btn-cart">Add to Cart</button>
+            <button onClick={handleAddToCart} className="btn-add-cart">
+              Add to Cart
+            </button>
             <button className="btn-buy">Buy Now</button>
           </div>
-
+             {showPopup && (
+            <div className="popup-message">
+              ✅ Item added to cart!
+            </div>
+          )}
           {/* ✅ Extra Information */}
           <div className="extra-info">
             <h4>Product Details</h4>

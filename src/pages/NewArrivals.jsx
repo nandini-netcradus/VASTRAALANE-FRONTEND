@@ -1,5 +1,6 @@
 import React, { useState }from "react";
 import "../scss/_newArrivals.scss";
+import { useCart } from "../context/CartContext";
 
 // 📂 Perfume & Gift Sets
 import ACQUA_DI_GIO_GIORGIO_ARMAN_white from "../assets/_ACQUA_DI_GIO_GIORGIO_ARMAN_white.png";
@@ -129,10 +130,15 @@ const newArrivals = [
   { name: "Birkenstock Boston Tan Suede", image: Birkenstock_boston_tan_Suede, price: 2155, oldPrice: 2710 },
   { name: "Birkenstock Brown Ramses", image: Birkenstock_brown_ramses_Copy_2, price: 1160, oldPrice: 2220 },
 ];
+
+
 const NewArrivals = () => {
+    const { addToCart } = useCart();   // ✅ Access cart context
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [popup, setPopup] = useState(""); // popup message
+  const [selectedSize, setSelectedSize] = useState("M"); // default size
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
 
@@ -149,10 +155,16 @@ const NewArrivals = () => {
   const incrementQty = () => setQuantity((prev) => prev + 1);
   const decrementQty = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
-  // Add to cart
   const handleAddToCart = (product) => {
-    setCart([...cart, { ...product, quantity }]);
+    const cartItem = {
+      ...product,
+      size: selectedSize,
+      quantity: Number(quantity),
+      image: product.image,
+    };
+    addToCart(cartItem); // ✅ context se add
     showPopup("Product added to Cart!");
+    console.log("Added to cart:", cartItem);
   };
 
   // Add to wishlist
@@ -196,15 +208,16 @@ const NewArrivals = () => {
               <span className="old-price">₹{selectedProduct.oldPrice}</span>
             </p>
 
-            <div className="size-selector">
-              <label>Size:</label>
-              <select>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-              </select>
-            </div>
+           <div className="size-selector">
+          <label>Size:</label>
+          <select value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)}>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+        </div>
+
 
             <div className="quantity-selector">
               <label>Quantity:</label>

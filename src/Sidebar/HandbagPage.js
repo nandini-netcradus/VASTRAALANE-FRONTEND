@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_HandbagPage.scss";
+import { useCart } from "../context/CartContext";
 
 
 // ✅ Import all handbag images
@@ -45,13 +46,28 @@ const handbags = [
   { id: 18, name: "Michael Kors Sullivan Tote Beige", price: "₹2700", oldPrice: "₹3200", discount: "14% off", image: MKSullivanBeige },
   { id: 19, name: "Michael Kors Sullivan Tote Coffee", price: "₹2799.0", oldPrice: "₹3100", discount: "14% off", image: MKSullivanCoffee },
 ];
-
-
-
 const HandbagPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart } = useCart();
+  const [showPopup, setShowPopup] = useState(false);
 
-// ✅ Agar koi product select nahi hua toh Grid show hoga
+  const handleAddToCart = () => {
+    if (!selectedProduct) return;
+
+    const cartItem = {
+      name: selectedProduct.name,
+    price: selectedProduct.price,
+    image: selectedProduct.image,
+     
+    };
+
+    addToCart(cartItem);
+    console.log("Added to cart:", cartItem);
+
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 2000);
+  };
+
   if (!selectedProduct) {
     return (
       <div className="handbag-page">
@@ -65,8 +81,8 @@ const HandbagPage = () => {
             >
               <img src={bag.image} alt={bag.name} />
               <h4>{bag.name}</h4>
-              <p className="old-price">{bag.oldPrice}</p>
-              <p className="current-price">{bag.price}</p>
+              <p className="old-price">₹{bag.oldPrice}</p>
+              <p className="current-price">₹{bag.price}</p>
             </div>
           ))}
         </div>
@@ -74,21 +90,21 @@ const HandbagPage = () => {
     );
   }
 
-  // ✅ Agar product select ho jaye toh Details page show hoga
   return (
     <div className="handbag-page">
       <div className="handbag-details">
-        
         <img src={selectedProduct.image} alt={selectedProduct.name} />
         <h2>{selectedProduct.name}</h2>
-        <p className="old-price">{selectedProduct.oldPrice}</p>
-        <p className="current-price">{selectedProduct.price}</p>
+        <p className="old-price">₹{selectedProduct.oldPrice}</p>
+        <p className="current-price">₹{selectedProduct.price}</p>
 
         {/* ✅ Action Buttons */}
         <div className="product-action-buttons">
+          <button className="cart-btn" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+          <button className="wishlist-btn">♡ Wishlist</button>
           <button className="buy-btn">Buy Now</button>
-          <button className="cart-btn">Add to Cart</button>
-          <button className="wishlist-btn">Wishlist</button>
         </div>
 
         {/* ✅ Related Products */}
@@ -104,11 +120,16 @@ const HandbagPage = () => {
               >
                 <img src={bag.image} alt={bag.name} />
                 <h4>{bag.name}</h4>
-                <p className="current-price">{bag.price}</p>
+                <p className="current-price">₹{bag.price}</p>
               </div>
             ))}
         </div>
       </div>
+
+      {/* ✅ Popup Message */}
+      {showPopup && (
+        <div className="popup-message">✅ {selectedProduct.name} added to cart!</div>
+      )}
     </div>
   );
 };
