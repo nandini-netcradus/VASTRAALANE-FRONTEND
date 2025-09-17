@@ -1,59 +1,72 @@
 
-// // * {
-// //   margin: 0;
-// //   padding: 0;
-// //   box-sizing: border-box;
-// // }
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 
-// // html, body {
-// //   width: 100%;
-// //   overflow-x: hidden; /* Prevent horizontal scrolling */
-// //   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-// // }
+// html, body {
+//   width: 100%;
+//   overflow-x: hidden; /* Prevent horizontal scrolling */
+//   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+// }
 
-// // /* Ensure all main containers stay within viewport */
-// // .container, .footer, main, header, section {
-// //   max-width: 100vw;
-// //   overflow-x: hidden;
-// // }
+// /* Ensure all main containers stay within viewport */
+// .container, .footer, main, header, section {
+//   max-width: 100vw;
+//   overflow-x: hidden;
+// }
 
-// // /* Footer styling */
-// // .footer {
-// //   background-color: #121212;
-// //   color: #f1f1f1;
-// //   text-align: center;
-// //   padding: 20px 0;
-// //   font-size: 1rem;
-// //   border-top: 1px solid rgba(255, 255, 255, 0.2);
-// //   width: 100%;
-// //   overflow-x: hidden;
+// /* Footer styling */
+// .footer {
+//   background-color: #121212;
+//   color: #f1f1f1;
+//   text-align: center;
+//   padding: 20px 0;
+//   font-size: 1rem;
+//   border-top: 1px solid rgba(255, 255, 255, 0.2);
+//   width: 100%;
+//   overflow-x: hidden;
 
-// //   p {
-// //     margin: 0;
-// //     word-wrap: break-word; /* prevent long text overflow */
-// //   }
+//   p {
+//     margin: 0;
+//     word-wrap: break-word; /* prevent long text overflow */
+//   }
 
-// //   /* Responsive adjustments */
-// //   @media (max-width: 1024px) {
-// //     padding: 15px 10px;
-// //     font-size: 0.95rem;
-// //   }
+  
+//   /* 📱 Mobile Responsive */
+//   @media (max-width: 768px) {
+//     flex-direction: column;
+//     text-align: center;
+//     align-items: center;
 
-// //   @media (max-width: 768px) {
-// //     padding: 12px 8px;
-// //     font-size: 0.9rem;
-// //   }
+//     .customer-care,
+//     .policy-info,
+//     .footer-links,
+//     .social-icons {
+//       flex: 1 1 100%;
+//       text-align: center;
+//     }
 
-// //   @media (max-width: 480px) {
-// //     padding: 10px 5px;
-// //     font-size: 0.85rem;
-// //   }
+//     .footer-links {
+//       flex-direction: row;
+//       flex-wrap: wrap;
+//       justify-content: center;
+//       gap: 15px;
+//     }
 
-// //   @media (max-width: 360px) {
-// //     padding: 8px 5px;
-// //     font-size: 0.8rem;
-// //   }
-// // }
+//     .policy-info {
+//       .policy-points {
+//         p {
+//           font-size: 12px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+
 
 
 
@@ -272,6 +285,36 @@
 
 
 
+//   /* 📱 Mobile Responsive */
+//   @media (max-width: 768px) {
+//     flex-direction: column;
+//     text-align: center;
+//     align-items: center;
+
+//     .customer-care,
+//     .policy-info,
+//     .footer-links,
+//     .social-icons {
+//       flex: 1 1 100%;
+//       text-align: center;
+//     }
+
+//     .footer-links {
+//       flex-direction: row;
+//       flex-wrap: wrap;
+//       justify-content: center;
+//       gap: 15px;
+//     }
+
+//     .policy-info {
+//       .policy-points {
+//         p {
+//           font-size: 12px;
+//         }
+//       }
+//     }
+//   }
+// }
 
 
 
@@ -284,17 +327,191 @@
 
 
 
+
+// .footer {
+//   background: #a000d6; // Purple background like SS
+//   color: #fff;
+//   padding: 40px 20px;
+//   position: relative;
+
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+//   align-items: flex-start;
+//   gap: 30px;
+
+//   h3 {
+//     font-size: 18px;
+//     margin-bottom: 10px;
+//     font-weight: 600;
+//     letter-spacing: 1px;
+//   }
+
+//   p,
+//   a {
+//     color: #fff;
+//     font-size: 14px;
+//     line-height: 1.6;
+//     text-decoration: none;
+
+//     &:hover {
+//       text-decoration: underline;
+//     }
+//   }
+
+//   /* ✅ Left: Customer Care */
+//   .customer-care {
+//     flex: 1 1 220px;
+//     text-align: left;
+//   }
+
+//   /* ✅ Center: Policy Info */
+//   .policy-info {
+//     flex: 2 1 300px;
+//     text-align: left;
+
+//     .policy-points {
+//       margin-top: 10px;
+
+//       p {
+//         font-size: 13px;
+//         margin: 4px 0;
+//       }
+//     }
+//   }
+
+//   /* ✅ Right: Links */
+//   .footer-links {
+//     flex: 1 1 200px;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 8px;
+//     text-align: left;
+
+//     a {
+//       font-size: 14px;
+//       font-weight: 500;
+//     }
+//   }
+
+//   /* ✅ Social Icons */
+//   .social-icons {
+//     flex: 1 1 120px;
+//     margin-top: 10px;
+//     display: flex;
+//     justify-content: center;
+
+//     a {
+//       display: inline-flex;
+//       align-items: center;
+//       justify-content: center;
+//       width: 45px;
+//       height: 45px;
+//       border-radius: 50%;
+//       background: #6a00a0;
+//       font-size: 20px;
+//       color: #fff;
+//       transition: 0.3s ease;
+
+//       &:hover {
+//         background: #fff;
+//         color: #6a00a0;
+//       }
+//     }
+//   }
+
+//   /* ✅ Copyright */
+//   .copyright {
+//     width: 100%;
+//     text-align: center;
+//     font-size: 13px;
+//     margin-top: 20px;
+//     opacity: 0.9;
+//   }
+
+//   /* 📱 Mobile Responsive */
+//   @media (max-width: 768px) {
+//     flex-direction: column;
+//     text-align: center;
+//     align-items: center;
+
+//     .customer-care,
+//     .policy-info,
+//     .footer-links,
+//     .social-icons {
+//       flex: 1 1 100%;
+//       text-align: center;
+//     }
+
+//     .footer-links {
+//       flex-direction: row;
+//       flex-wrap: wrap;
+//       justify-content: center;
+//       gap: 15px;
+//     }
+
+//     .policy-info {
+//       .policy-points {
+//         p {
+//           font-size: 12px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Ensure all main containers stay within viewport */
+.container, .footer, main, header, section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Footer styling */
 .footer {
-  background: #a000d6; // Purple background like SS
-  color: #fff;
+  background-color: #242375; /* Dark background */
+  color: #f1f1f1;
   padding: 40px 20px;
-  position: relative;
+  width: 100%;
+  overflow-x: hidden;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: 30px;
+
+  text-align: left; /* Default desktop alignment */
 
   h3 {
     font-size: 18px;
@@ -303,9 +520,8 @@
     letter-spacing: 1px;
   }
 
-  p,
-  a {
-    color: #fff;
+  p, a {
+    color: #f1f1f1;
     font-size: 14px;
     line-height: 1.6;
     text-decoration: none;
@@ -318,13 +534,11 @@
   /* ✅ Left: Customer Care */
   .customer-care {
     flex: 1 1 220px;
-    text-align: left;
   }
 
   /* ✅ Center: Policy Info */
   .policy-info {
     flex: 2 1 300px;
-    text-align: left;
 
     .policy-points {
       margin-top: 10px;
@@ -342,7 +556,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    text-align: left;
 
     a {
       font-size: 14px;
@@ -364,14 +577,14 @@
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      background: #6a00a0;
+      background: #333;
       font-size: 20px;
-      color: #fff;
+      color: #f1f1f1;
       transition: 0.3s ease;
 
       &:hover {
-        background: #fff;
-        color: #6a00a0;
+        background: #f1f1f1;
+        color: #e0f31a;
       }
     }
   }
@@ -385,11 +598,18 @@
     opacity: 0.9;
   }
 
-  /* 📱 Mobile Responsive */
+  /* 📱 Responsive adjustments */
+  @media (max-width: 1024px) {
+    padding: 15px 10px;
+    font-size: 0.95rem;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    padding: 12px 8px;
+    font-size: 0.9rem;
 
     .customer-care,
     .policy-info,
@@ -413,5 +633,15 @@
         }
       }
     }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 5px;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 360px) {
+    padding: 8px 5px;
+    font-size: 0.8rem;
   }
 }

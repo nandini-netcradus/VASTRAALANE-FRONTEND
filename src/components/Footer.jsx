@@ -76,11 +76,11 @@ function Footer() {
       </div>
 
       {/* ✅ Social Icon */}
-      <div className="social-icons">
+      {/* <div className="social-icons">
         <a href="https://instagram.com" target="_blank" rel="noreferrer">
           <i className="fab fa-instagram"></i>
         </a>
-      </div>
+      </div> */}
 
       {/* ✅ Copyright */}
       <p className="copyright">
