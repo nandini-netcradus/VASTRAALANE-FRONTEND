@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_PerfumePage.scss";
+import { useCart } from "../context/CartContext"; 
 
 
 // 🔽 Import all perfume images
@@ -87,17 +88,22 @@ const perfumes = [
   { id: 39, name: "YSL_BLACK_OPIUM_EAU_DE_PARFUME", price: "₹1,000", oldPrice: "₹7,500", discount: "6% off", image: YslOpium },
   { id: 40, name: "YSL_MON PARIS-EDP", price: "₹2,400", oldPrice: "₹7,900", discount: "6% off", image: YslParis },
 ];
-
-
 const PerfumePage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart, addToWishlist, wishlist } = useCart();
 
   const handleProductClick = (prod) => setSelectedProduct(prod);
-  const handleBack = () => setSelectedProduct(null);
 
+  // ✅ Related products logic
   const relatedProducts = selectedProduct
     ? perfumes.filter((p) => p.id !== selectedProduct.id)
     : [];
+
+  // ✅ helper to clean price
+  const getNumericPrice = (priceStr) => {
+    if (!priceStr) return 0;
+    return Number(priceStr.toString().replace(/[^0-9.]/g, "")); // sirf number
+  };
 
   return (
     <div className="perfume-page">
@@ -123,7 +129,6 @@ const PerfumePage = () => {
         </>
       ) : (
         <div className="perfume-details">
-          
           <div className="details-container">
             <div className="details-image">
               <img src={selectedProduct.image} alt={selectedProduct.name} />
@@ -133,10 +138,31 @@ const PerfumePage = () => {
               <p className="old-price">{selectedProduct.oldPrice}</p>
               <p className="current-price">{selectedProduct.price}</p>
 
+              {/* ✅ Buttons with working logic */}
               <div className="product-action-buttons">
                 <button className="buy-btn">Buy Now</button>
-                <button className="cart-btn">Add to Cart</button>
-                <button className="wishlist-btn">Wishlist</button>
+                <button
+                  className="cart-btn"
+                  onClick={() =>
+                    addToCart({
+                      id: selectedProduct.id,
+                      name: selectedProduct.name,
+                      price: getNumericPrice(selectedProduct.price), // ✅ cleaned price
+                      quantity: 1,
+                      image: selectedProduct.image,
+                    })
+                  }
+                >
+                  Add to Cart
+                </button>
+                <button
+                  className="wishlist-btn"
+                  onClick={() => addToWishlist(selectedProduct)}
+                >
+                  {wishlist.some((w) => w.id === selectedProduct.id)
+                    ? "Remove from Wishlist"
+                    : "Wishlist"}
+                </button>
               </div>
 
               <div className="policy-box">
@@ -152,6 +178,7 @@ const PerfumePage = () => {
             </div>
           </div>
 
+          {/* ✅ Related Products */}
           {relatedProducts.length > 0 && (
             <>
               <h3>Related Products</h3>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_LuxuryPage.scss";
+import { useCart } from "../context/CartContext"; 
 
 // Images import
 import ArmaniExchange from "../assets/Arman_i_ Exchange watch.jpg";
@@ -55,8 +56,9 @@ const products = [
 
 const LuxuryPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart, addToWishlist } = useCart(); // ✅ cart context
 
-  // ✅ Agar product select nahi kiya → Grid view dikhega
+  // ✅ Grid view (no product selected)
   if (!selectedProduct) {
     return (
       <div className="luxury-page">
@@ -87,7 +89,7 @@ const LuxuryPage = () => {
     );
   }
 
-  // ✅ Agar product select hua → Details view dikhega
+  // ✅ Details view (product selected)
   const relatedProducts = products
     .filter(
       (p) =>
@@ -97,8 +99,6 @@ const LuxuryPage = () => {
 
   return (
     <div className="product-details">
-      
-
       <div className="details-container">
         {/* Left - Image */}
         <div className="details-image">
@@ -109,20 +109,43 @@ const LuxuryPage = () => {
         <div className="details-info">
           <h2>{selectedProduct.name}</h2>
 
-          {/* Price Box */}
           <div className="price-box">
             <span className="old-price">₹{selectedProduct.oldPrice}</span>
             <span className="current-price">₹{selectedProduct.price}</span>
           </div>
 
-          {/* Buttons */}
+          {/* Buttons with cart + wishlist */}
           <div className="action-buttons">
             <button className="buy-btn">Buy Now</button>
-            <button className="cart-btn">Add to Cart</button>
-            <button className="wishlist-btn">Wishlist</button>
+            <button
+              className="cart-btn"
+              onClick={() =>
+                addToCart({
+                  id: selectedProduct.id,
+                  name: selectedProduct.name,
+                  price: selectedProduct.price,
+                  image: selectedProduct.image,
+                  quantity: 1,
+                })
+              }
+            >
+              Add to Cart
+            </button>
+            <button
+              className="wishlist-btn"
+              onClick={() =>
+                addToWishlist({
+                  id: selectedProduct.id,
+                  name: selectedProduct.name,
+                  price: selectedProduct.price,
+                  image: selectedProduct.image,
+                })
+              }
+            >
+              Wishlist
+            </button>
           </div>
 
-          {/* Key Points */}
           <div className="policy-box">
             <h3>Why Shop With Us?</h3>
             <ul>

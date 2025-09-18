@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_sunglasses.scss";
+import { useCart,  } from "../context/CartContext";
 
 
 // ✅ Import all sunglasses images
@@ -70,11 +71,31 @@ const sunglasses = [
 const Sunglasses = () => {
   const [activeCard, setActiveCard] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart } = useCart();
+  const [popup, setPopup] = useState("");
 
   // Handle card click
   const handleClick = (product) => {
     setActiveCard(product.id);
     setSelectedProduct(product);
+  };
+
+  // Handle Add to Cart
+  const handleAddToCart = async (product) => {
+    const payload = {
+      productId: product.id, // check backend if it needs `id` instead
+      quantity: 1,userId: "currentUserId"
+      // userId: "currentUserId" // uncomment if backend requires user ID
+    };
+
+   try {
+  const response = await addToCart(payload);
+  console.log("Cart API response:", response);
+  setPopup(`${product.name} added to cart!`);
+} catch (err) {
+  console.error("Failed to add to cart:", err.response?.data || err.message);
+  setPopup(`Failed to add ${product.name} to cart.`);
+}
   };
 
   // If product is selected → Show Detail Page
@@ -115,7 +136,12 @@ const Sunglasses = () => {
 
             <div className="product-actions">
               <button className="btn-wishlist">♡ Add to Wishlist</button>
-              <button className="btn-cart">Add to Cart</button>
+              <button
+                className="btn-cart"
+                onClick={() => handleAddToCart(selectedProduct)}
+              >
+                Add to Cart
+              </button>
               <button className="btn-buy">Buy Now</button>
             </div>
 
@@ -129,7 +155,7 @@ const Sunglasses = () => {
           </div>
         </div>
 
-        {/* Related Sunglasses Section → completely below */}
+        {/* Related Sunglasses Section */}
         <div className="related-sunglasses-section">
           <h3 className="related-title">Related Sunglasses</h3>
           <div className="related-items-grid">
@@ -145,10 +171,19 @@ const Sunglasses = () => {
                   <img src={item.img} alt={item.name} />
                   <p className="related-name">{item.name}</p>
                   <p className="related-price">{item.price}</p>
+                  <button
+                    className="btn-cart"
+                    onClick={() => handleAddToCart(item)}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               ))}
           </div>
         </div>
+
+        {/* Popup */}
+        {popup && <div className="popup">{popup}</div>}
       </div>
     );
   }
@@ -174,19 +209,26 @@ const Sunglasses = () => {
             />
             <h3 className="sunglasses-name">{product.name}</h3>
             <p className="sunglasses-price">
-              {product.price}{" "}
-              <span className="old-price">{product.oldPrice}</span>
+              {product.price} <span className="old-price">{product.oldPrice}</span>
             </p>
             <p className="discount">{product.discount}</p>
 
             <div className="btn-group">
               <button className="buy-btn">Buy Now</button>
-              <button className="cart-btn">Add to Cart</button>
+              <button
+                className="cart-btn"
+                onClick={() => handleAddToCart(product)}
+              >
+                Add to Cart
+              </button>
               <button className="wishlist-btn">Wishlist</button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Popup */}
+      {popup && <div className="popup">{popup}</div>}
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../scss/_LoafersPage.scss";
+import { useCart } from "../context/CartContext";
+
 
 // ✅ Loafers images import
 import Loafers1 from "../assets/Loro piana loaferrs.png";
@@ -22,35 +24,45 @@ import Loafers17 from "../assets/Loro Piano Loafers 19051 Greyy.png";
 import Loafers18 from "../assets/Loro Piano Loafers 19051 Navy - Copy.png";
 import Loafers19 from "../assets/LoroO piana loafers.png";
 
-// ✅ Loafers products array
 const loafers = [
-  { id: 1, name: "Loro Piana Loafers 1", price: "₹3999.00", oldPrice: "₹30,000", discount: "17% off", image: Loafers1 },
-  { id: 2, name: "Loro Piana Loafers 2", price: "₹3999.00", oldPrice: "₹32,000", discount: "19% off", image: Loafers2 },
-  { id: 3, name: "Loro Piana Loafers 3", price: "₹3999.0", oldPrice: "₹33,000", discount: "15% off", image: Loafers3 },
-  { id: 4, name: "Loro Piana Loafers 4", price: "₹2900.0", oldPrice: "₹34,000", discount: "14% off", image: Loafers4 },
-  { id: 5, name: "Loro Piana Loafers 5", price: "₹2900.0", oldPrice: "₹31,000", discount: "13% off", image: Loafers5 },
-  { id: 6, name: "Loro Piana Loafers 6", price: "₹2550", oldPrice: "₹30,500", discount: "16% off", image: Loafers6 },
-  { id: 7, name: "Loro Piana Loafers 7", price: "₹2600", oldPrice: "₹32,500", discount: "15% off", image: Loafers7 },
-  { id: 8, name: "Loro Piana Loafers 8", price: "₹2800", oldPrice: "₹33,500", discount: "15% off", image: Loafers8 },
-  { id: 9, name: "Loro Piana Loafers 9", price: "₹2900", oldPrice: "₹34,500", discount: "14% off", image: Loafers9 },
-  { id: 10, name: "Loro Piana Loafers 10", price: "₹3000", oldPrice: "₹35,000", discount: "14% off", image: Loafers10 },
-  { id: 11, name: "Loro Piana Loafers 11", price: "₹3100", oldPrice: "₹36,000", discount: "14% off", image: Loafers11 },
-  { id: 12, name: "Loro Piana Loafers 12", price: "₹3200", oldPrice: "₹37,000", discount: "14% off", image: Loafers12 },
-  { id: 13, name: "Loro Piana Loafers 13", price: "₹3300", oldPrice: "₹38,000", discount: "14% off", image: Loafers13 },
-  { id: 14, name: "Loro Piana Loafers 14", price: "₹3400", oldPrice: "₹39,000", discount: "14% off", image: Loafers14 },
-  { id: 15, name: "Loro Piana Loafers 15", price: "₹3500", oldPrice: "₹40,000", discount: "14% off", image: Loafers15 },
-  { id: 16, name: "Loro Piana Loafers 16", price: "₹3600", oldPrice: "₹41,000", discount: "14% off", image: Loafers16 },
-  { id: 17, name: "Loro Piana Loafers 17", price: "₹299.00", oldPrice: "₹42,000", discount: "14% off", image: Loafers17 },
-  { id: 18, name: "Loro Piana Loafers 18", price: "₹2999.00", oldPrice: "₹43,000", discount: "14% off", image: Loafers18 },
-  { id: 19, name: "Loro Piana Loafers 19", price: "₹3100.0", oldPrice: "₹44,000", discount: "14% off", image: Loafers19 },
+  { id: 1, name: "Loro Piana Loafers 1", currentPrice: 3999, oldPrice: 30000, discount: "17% off", image: Loafers1 },
+  { id: 2, name: "Loro Piana Loafers 2", currentPrice: 3999, oldPrice: 32000, discount: "19% off", image: Loafers2 },
+  { id: 3, name: "Loro Piana Loafers 3", currentPrice: 3999, oldPrice: 33000, discount: "15% off", image: Loafers3 },
+  { id: 4, name: "Loro Piana Loafers 4", currentPrice: 2900, oldPrice: 34000, discount: "14% off", image: Loafers4 },
+  { id: 5, name: "Loro Piana Loafers 5", currentPrice: 2900, oldPrice: 31000, discount: "13% off", image: Loafers5 },
+  { id: 6, name: "Loro Piana Loafers 6", currentPrice: 2550, oldPrice: 30500, discount: "16% off", image: Loafers6 },
+  { id: 7, name: "Loro Piana Loafers 7", currentPrice: 2600, oldPrice: 32500, discount: "15% off", image: Loafers7 },
+  { id: 8, name: "Loro Piana Loafers 8", currentPrice: 2800, oldPrice: 33500, discount: "15% off", image: Loafers8 },
+  { id: 9, name: "Loro Piana Loafers 9", currentPrice: 2900, oldPrice: 34500, discount: "14% off", image: Loafers9 },
+  { id: 10, name: "Loro Piana Loafers 10", currentPrice: 3000, oldPrice: 35000, discount: "14% off", image: Loafers10 },
+  { id: 11, name: "Loro Piana Loafers 11", currentPrice: 3100, oldPrice: 36000, discount: "14% off", image: Loafers11 },
+  { id: 12, name: "Loro Piana Loafers 12", currentPrice: 3200, oldPrice: 37000, discount: "14% off", image: Loafers12 },
+  { id: 13, name: "Loro Piana Loafers 13", currentPrice: 3300, oldPrice: 38000, discount: "14% off", image: Loafers13 },
+  { id: 14, name: "Loro Piana Loafers 14", currentPrice: 3400, oldPrice: 39000, discount: "14% off", image: Loafers14 },
+  { id: 15, name: "Loro Piana Loafers 15", currentPrice: 3500, oldPrice: 40000, discount: "14% off", image: Loafers15 },
+  { id: 16, name: "Loro Piana Loafers 16", currentPrice: 3600, oldPrice: 41000, discount: "14% off", image: Loafers16 },
+  { id: 17, name: "Loro Piana Loafers 17", currentPrice: 2999, oldPrice: 42000, discount: "14% off", image: Loafers17 },
+  { id: 18, name: "Loro Piana Loafers 18", currentPrice: 2999, oldPrice: 43000, discount: "14% off", image: Loafers18 },
+  { id: 19, name: "Loro Piana Loafers 19", currentPrice: 3100, oldPrice: 44000, discount: "14% off", image: Loafers19 },
 ];
-
 
 const LoafersPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   const handleProductClick = (prod) => setSelectedProduct(prod);
-  const handleBack = () => setSelectedProduct(null);
+  const handleAddToCart = (product) => {
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      price: product.currentPrice,
+      quantity: Number(quantity),
+      image: product.image,
+    };
+    console.log("Cart payload:", cartItem);
+    addToCart(cartItem);
+  };
 
   const relatedProducts = selectedProduct
     ? loafers.filter((p) => p.id !== selectedProduct.id)
@@ -69,8 +81,8 @@ const LoafersPage = () => {
                 </div>
                 <div className="product-info">
                   <h4>{prod.name}</h4>
-                  <p className="old-price">{prod.oldPrice}</p>
-                  <p className="current-price">{prod.price}</p>
+                  <p className="old-price">₹{prod.oldPrice}</p>
+                  <p className="current-price">₹{prod.currentPrice}</p>
                   <p className="discount">{prod.discount}</p>
                 </div>
               </div>
@@ -79,14 +91,12 @@ const LoafersPage = () => {
         </>
       ) : (
         <div className="product-details-page">
-          
-
           <div className="main-product">
             <img src={selectedProduct.image} alt={selectedProduct.name} />
             <div className="product-details-info">
               <h2>{selectedProduct.name}</h2>
-              <p className="old-price">{selectedProduct.oldPrice}</p>
-              <p className="current-price">{selectedProduct.price}</p>
+              <p className="old-price">₹{selectedProduct.oldPrice}</p>
+              <p className="current-price">₹{selectedProduct.currentPrice}</p>
               <p className="discount">{selectedProduct.discount}</p>
 
               <div className="details-box">
@@ -108,7 +118,9 @@ const LoafersPage = () => {
 
                 <div className="action-buttons">
                   <button className="buy-now">Buy Now</button>
-                  <button className="add-to-cart">Add to Cart</button>
+                  <button className="add-to-cart" onClick={() => handleAddToCart(selectedProduct)}>
+                    Add to Cart
+                  </button>
                   <button className="wishlist">Add to Wishlist</button>
                 </div>
               </div>
@@ -123,7 +135,7 @@ const LoafersPage = () => {
                   <div key={p.id} className="related-product-card" onClick={() => handleProductClick(p)}>
                     <img src={p.image} alt={p.name} />
                     <h4>{p.name}</h4>
-                    <p className="current-price">{p.price}</p>
+                    <p className="current-price">₹{p.currentPrice}</p>
                   </div>
                 ))}
               </div>

@@ -1,6 +1,7 @@
 // SandalsPage.js
 import React, { useState } from "react";
 import "../scss/_SandalsPage.scss";
+import { useCart } from "../context/CartContext"; 
 
 // ✅ Import all product images
 import AlexanderBeige from "../assets/Alexander_Mcqueen_Alex_Leather_For_Women_With_OG_Box_&_Carry_Bag_Beige_White_1892 copy.png";
@@ -55,9 +56,20 @@ const sandalsProducts = [
   { id: 23, name: "Hermes Oran Flats Green", image: HermesGreen, oldPrice: "₹2999", price: "₹1799", details: ["Elegant green leather","OG box & carry bag included","Slide-on flats","Comfortable fit","High-quality Hermes"] },
   { id: 24, name: "Hermes Oran Flats Light Pink", image: HermesPink, oldPrice: "₹2,999", price: "₹1599",  details: ["Soft pink leather","Includes OG box & carry bag","Slide-on design","Comfortable fit","Authentic Hermes"] }
 ];
+
+
 const SandalsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
+
+  // ✅ Cart & Wishlist from Context
+  const { addToCart, addToWishlist, wishlist } = useCart();
+
+  // ✅ Price cleaner
+  const getNumericPrice = (priceStr) => {
+    if (!priceStr) return 0;
+    return Number(priceStr.toString().replace(/[^0-9.]/g, ""));
+  };
 
   // ✅ Related products filter
   const getRelatedProducts = (currentId) => {
@@ -118,20 +130,34 @@ const SandalsPage = () => {
                 {selectedProduct.details.map((d, i) => (
                   <li key={i}>{d}</li>
                 ))}
-                {/* <li>Premium Quality Material – Comfortable & Durable</li>
-                <li>7 Days Easy Return Policy</li>
-                <li>Free Shipping Across India</li>
-                <li>Non-Slip Sole for Better Grip</li>
-                <li>Lightweight & Stylish Design</li>
-                <li>Warranty: 6 Months against manufacturing defects</li>
-                <li>Perfect for Casual & Sportswear</li> */}
               </ul>
             </div>
 
+            {/* ✅ Buttons with working logic */}
             <div className="buttons">
               <button onClick={handleBuyNow}>Buy Now</button>
-              <button>Add to Cart</button>
-              <button>Wishlist</button>
+
+              <button
+                onClick={() =>
+                  addToCart({
+                    id: selectedProduct.id,
+                    name: selectedProduct.name,
+                    price: getNumericPrice(selectedProduct.price), // ✅ clean number
+                    quantity: 1,
+                    image: selectedProduct.image,
+                  })
+                }
+              >
+                Add to Cart
+              </button>
+
+              <button
+                onClick={() => addToWishlist(selectedProduct)}
+              >
+                {wishlist.some((w) => w.id === selectedProduct.id)
+                  ? "Remove from Wishlist"
+                  : "Wishlist"}
+              </button>
             </div>
           </div>
         </div>

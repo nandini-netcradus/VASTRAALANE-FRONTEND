@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_perfume.scss";
-
+import { useCart } from "../context/CartContext";
 
 // 🔽 Import all perfume images
 import AcquaDiGio from "../assets/_ACQUA_DI_GIO_GIORGIO_ARMAN_white.png";
@@ -89,13 +89,33 @@ const perfumes = [
 ];
 const Perfumes = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart } = useCart();
+  const [popup, setPopup] = useState("");
+
+  const showPopup = (message) => {
+    setPopup(message);
+    setTimeout(() => setPopup(""), 2000);
+  };
+
+  const handleAddToCart = (product) => {
+    // ✅ Backend compatible payload
+    const payload = {
+      id: product.id,
+      name: product.name,
+      price: parseFloat(product.price.replace("₹", "")),
+      quantity: 1,
+      image: product.image
+    };
+
+    addToCart(payload);
+    showPopup(`${product.name} added to cart!`);
+  };
 
   return (
     <div className="perfumes-container">
       <h2 className="section-title">Luxury Perfumes Collection</h2>
 
       {!selectedProduct ? (
-        // 🔹 Grid view
         <div className="perfumes-grid">
           {perfumes.map((item) => (
             <div
@@ -103,51 +123,37 @@ const Perfumes = () => {
               className="perfumes-card"
               onClick={() => setSelectedProduct(item)}
             >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="perfumes-image"
-              />
+              <img src={item.image} alt={item.name} className="perfumes-image" />
               <h3 className="perfumes-name">{item.name}</h3>
               <p className="perfumes-price">{item.price}</p>
             </div>
           ))}
         </div>
       ) : (
-        // 🔹 Detail view
         <div className="product-detail">
-          <img
-            src={selectedProduct.image}
-            alt={selectedProduct.name}
-            className="detail-image"
-          />
+          <img src={selectedProduct.image} alt={selectedProduct.name} className="detail-image" />
 
           <div className="detail-info">
-            {/* 🔹 Left Info */}
             <div className="info-left">
               <h2>{selectedProduct.name}</h2>
               <p className="perfumes-price">
-                {selectedProduct.price}{" "}
-                <span className="old-price">{selectedProduct.oldPrice}</span>
+                {selectedProduct.price} <span className="old-price">{selectedProduct.oldPrice}</span>
               </p>
               <p className="discount">{selectedProduct.discount}</p>
             </div>
 
-            {/* 🔹 Buttons */}
             <div className="info-right">
-              <button className="btn-cart">Add to Cart</button>
+              <button className="btn-cart" onClick={() => handleAddToCart(selectedProduct)}>Add to Cart</button>
               <button className="btn-wishlist">Wishlist</button>
               <button className="btn-buy">Buy Now</button>
             </div>
 
-            {/* ✅ Extra Info with Icons */}
             <div className="extra-info">
               <p>✔ Pay on delivery available</p>
               <p>✔ Easy 15 days exchange available</p>
               <p>✔ 100% Original Products</p>
             </div>
 
-            {/* ✅ Product Specs (Details + Specifications) */}
             <div className="product-specs">
               <div className="specs-left">
                 <h3>Product Details</h3>
@@ -161,21 +167,11 @@ const Perfumes = () => {
               <div className="specs-right">
                 <h3>Specifications</h3>
                 <ul>
-                  <li>
-                    <strong>Formulation:</strong> Spray
-                  </li>
-                  <li>
-                    <strong>Fragrance:</strong> Fresh
-                  </li>
-                  <li>
-                    <strong>Strength:</strong> Medium
-                  </li>
-                  <li>
-                    <strong>Sustainable:</strong> Regular
-                  </li>
-                  <li>
-                    <strong>Type:</strong> Eau de Toilette
-                  </li>
+                  <li><strong>Formulation:</strong> Spray</li>
+                  <li><strong>Fragrance:</strong> Fresh</li>
+                  <li><strong>Strength:</strong> Medium</li>
+                  <li><strong>Sustainable:</strong> Regular</li>
+                  <li><strong>Type:</strong> Eau de Toilette</li>
                 </ul>
               </div>
             </div>
@@ -183,7 +179,6 @@ const Perfumes = () => {
         </div>
       )}
 
-      
       {selectedProduct && (
         <div className="related-products">
           <h3>Related Products</h3>
@@ -199,15 +194,14 @@ const Perfumes = () => {
                 >
                   <img src={item.image} alt={item.name} />
                   <h4>{item.name}</h4>
-                  <p className="price">
-                    {item.price}{" "}
-                    <span className="old-price">{item.oldPrice}</span>
-                  </p>
+                  <p className="price">{item.price} <span className="old-price">{item.oldPrice}</span></p>
                 </div>
               ))}
           </div>
         </div>
       )}
+
+      {popup && <div className="popup">{popup}</div>}
     </div>
   );
 };

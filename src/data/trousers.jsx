@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_trousers.scss";
-import { useNavigate,   } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 // Images import
@@ -38,10 +38,9 @@ const trackpants = [
   { id: 15, name: "Zara Grey Stripes Premium Classic Linen Pant", image: ZaraGrey, price: "₹2289", oldPrice: "₹9,400", discount: "72% off" },
 ];
 
-
 const Trousers = () => {
   const navigate = useNavigate();
-  const { addToCart } = useCart(); // ✅ useCart context
+  const { addToCart } = useCart(); 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [popup, setPopup] = useState("");
@@ -52,8 +51,8 @@ const Trousers = () => {
   };
 
   const handleAddToCart = (product) => {
-    addToCart({ ...product, quantity }); // ✅ same as Products component
-    showPopup(`${product.name} added to Cart!`);
+    addToCart({ ...product, quantity });
+    showPopup(`${product.name} added to cart!`);
   };
 
   // Product list view
@@ -72,7 +71,7 @@ const Trousers = () => {
               <img src={item.image} alt={item.name} />
               <h3>{item.name}</h3>
               <p className="price">
-                {item.price} <span className="old-price">{item.oldPrice}</span>
+                ₹{item.price} <span className="old-price">₹{item.oldPrice}</span>
               </p>
               <p className="discount">{item.discount}</p>
             </div>
@@ -86,7 +85,9 @@ const Trousers = () => {
   return (
     <div className="product-detail">
       {popup && <div className="popup">{popup}</div>}
-      <button className="back-btn" onClick={() => setSelectedProduct(null)}>← Back</button>
+      <button className="back-btn" onClick={() => setSelectedProduct(null)}>
+        ← Back
+      </button>
 
       <div className="detail-content">
         <div className="detail-left">
@@ -96,7 +97,7 @@ const Trousers = () => {
         <div className="detail-right">
           <h2>{selectedProduct.name}</h2>
           <p className="price">
-            <span className="new-price">₹{selectedProduct.price}</span>{" "}
+            ₹{selectedProduct.price}{" "}
             <span className="old-price">₹{selectedProduct.oldPrice}</span>{" "}
             <span className="discount">{selectedProduct.discount}</span>
           </p>
@@ -105,7 +106,9 @@ const Trousers = () => {
           <div className="quantity">
             <label>Quantity:</label>
             <div className="qty-box">
-              <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>-</button>
+              <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>
+                -
+              </button>
               <input type="number" value={quantity} readOnly />
               <button onClick={() => setQuantity(quantity + 1)}>+</button>
             </div>
@@ -113,16 +116,52 @@ const Trousers = () => {
 
           {/* Action Buttons */}
           <div className="detail-actions">
-            <button
-              className="btn-cart"
-              onClick={() => handleAddToCart(selectedProduct)}
-            >
+            <button className="btn-cart" onClick={() => handleAddToCart(selectedProduct)}>
               Add to Cart
             </button>
-            <button className="btn-buy" onClick={() => { handleAddToCart(selectedProduct); navigate("/cart"); }}>
+            <button
+              className="btn-buy"
+              onClick={() => {
+                handleAddToCart(selectedProduct);
+                navigate("/cart");
+              }}
+            >
               Buy Now
             </button>
           </div>
+
+          {/* ✅ Extra Information */}
+          <div className="extra-info">
+            <h4>Product Details</h4>
+            <ul>
+              <li>✅ Free Delivery on all orders</li>
+              <li>✅ 14 Days Return / Replacement Policy</li>
+              <li>✅ Material: Polyester & Cotton Blend</li>
+              <li>✅ Care Instructions: Machine Wash Cold</li>
+              <li>✅ Perfect for Sports & Casual Wear</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* ✅ Related Items Section */}
+      <div className="related-items">
+        <h3>Related Trousers</h3>
+        <div className="related-grid">
+          {trackpants
+            .filter((item) => item.id !== selectedProduct.id)
+            .slice(0, 5)
+            .map((item) => (
+              <div
+                key={item.id}
+                className="related-card"
+                onClick={() => setSelectedProduct(item)}
+              >
+                <img src={item.image} alt={item.name} />
+                <p className="name">{item.name}</p>
+                <p className="price">₹{item.price}</p>
+              </div>
+            ))}
         </div>
       </div>
     </div>

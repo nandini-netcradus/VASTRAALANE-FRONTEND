@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../scss/_handbags.scss";
-
 import { useCart } from "../context/CartContext";
 
 // ✅ Import all handbag images
@@ -47,6 +46,7 @@ const handbags = [
   { id: 19, name: "Michael Kors Sullivan Tote Coffee", price: "₹2000", oldPrice: "₹31,500", discount: "14% off", image: MKSullivanCoffee },
 ];
 
+const getNumericPrice = (priceStr) => Number(priceStr.replace(/[^0-9.]/g, ""));
 
 const Handbags = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -59,8 +59,16 @@ const Handbags = () => {
   };
 
   const handleAddToCart = (product) => {
-    addToCart(product);
-    showPopup(`${product.name} added to cart!`);
+     console.log(`✅ Add to Cart clicked for: ${product.name}`);
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      price: getNumericPrice(product.price),
+      quantity: 1,
+      image: product.image,
+    };
+    addToCart(cartItem);
+    showPopup(`✅ ${product.name} added to cart!`);
   };
 
   return (
@@ -138,7 +146,9 @@ const Handbags = () => {
                 ))}
             </div>
           </div>
+
           {popup && <div className="popup">{popup}</div>}
+         
         </div>
       )}
     </div>

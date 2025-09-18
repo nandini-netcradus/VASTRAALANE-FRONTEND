@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_ShoesPage.scss";
+import { useCart } from "../context/CartContext";
 
 // ✅ Import all shoe images
 import Adapt_Automax_Full_Black_Shoes from "../assets/Adapt_Automax_Full_Black_Shoes.jpg";
@@ -128,12 +129,20 @@ const menshoes = [
   { id: 60, name: "Onitsuka_Tiger_Mexico_66_Slip_On_Green_For_Her", price: 1200, oldPrice: 1250, discount: "4% off", image: Onitsuka_Tiger_Mexico_66_Slip_On_Green_For_Her }
 
 ];
-
 const ShoesPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  // ✅ Cart & Wishlist
+  const { addToCart, addToWishlist, wishlist } = useCart();
+
   const handleProductClick = (prod) => setSelectedProduct(prod);
   const handleBack = () => setSelectedProduct(null);
+
+  // ✅ Helper: clean numeric price
+  const getNumericPrice = (priceStr) => {
+    if (!priceStr) return 0;
+    return Number(priceStr.toString().replace(/[^0-9.]/g, ""));
+  };
 
   const relatedProducts = selectedProduct
     ? menshoes.filter((p) => p.id !== selectedProduct.id)
@@ -146,7 +155,11 @@ const ShoesPage = () => {
           <h2 className="page-title">Shoes Collection</h2>
           <div className="products-grid">
             {menshoes.map((prod) => (
-              <div key={prod.id} className="product-card" onClick={() => handleProductClick(prod)}>
+              <div
+                key={prod.id}
+                className="product-card"
+                onClick={() => handleProductClick(prod)}
+              >
                 <div className="product-image">
                   <img src={prod.image} alt={prod.name} />
                 </div>
@@ -162,7 +175,9 @@ const ShoesPage = () => {
         </>
       ) : (
         <div className="product-details-page">
-          <button className="back-btn" onClick={handleBack}>&larr; Back</button>
+          <button className="back-btn" onClick={handleBack}>
+            &larr; Back
+          </button>
 
           <div className="main-product">
             <img src={selectedProduct.image} alt={selectedProduct.name} />
@@ -185,14 +200,38 @@ const ShoesPage = () => {
                 <li>Perfect for Casual & Sportswear</li>
               </ul>
               <p className="description">
-                These stylish shoes combine comfort, performance, and modern design. Perfect for sports, casual outings, and everyday wear.
+                These stylish shoes combine comfort, performance, and modern
+                design. Perfect for sports, casual outings, and everyday wear.
               </p>
             </div>
 
+            {/* 🔹 Action Buttons */}
             <div className="product-action-buttons">
               <button className="buy-btn">Buy Now</button>
-              <button className="cart-btn">Add to Cart</button>
-              <button className="wishlist-btn">Add to Wishlist</button>
+
+              <button
+                className="cart-btn"
+                onClick={() =>
+                  addToCart({
+                    id: selectedProduct.id,
+                    name: selectedProduct.name,
+                    price: getNumericPrice(selectedProduct.price),
+                    quantity: 1,
+                    image: selectedProduct.image,
+                  })
+                }
+              >
+                Add to Cart
+              </button>
+
+              <button
+                className="wishlist-btn"
+                onClick={() => addToWishlist(selectedProduct)}
+              >
+                {wishlist.some((w) => w.id === selectedProduct.id)
+                  ? "Remove from Wishlist"
+                  : "Wishlist"}
+              </button>
             </div>
 
             {relatedProducts.length > 0 && (
@@ -200,7 +239,11 @@ const ShoesPage = () => {
                 <h3 className="related-title">Related Products</h3>
                 <div className="related-products-grid">
                   {relatedProducts.map((p) => (
-                    <div key={p.id} className="related-product-card" onClick={() => handleProductClick(p)}>
+                    <div
+                      key={p.id}
+                      className="related-product-card"
+                      onClick={() => handleProductClick(p)}
+                    >
                       <img src={p.image} alt={p.name} />
                       <h4>{p.name}</h4>
                       <p className="current-price">{p.price}</p>

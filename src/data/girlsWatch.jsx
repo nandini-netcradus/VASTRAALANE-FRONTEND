@@ -63,10 +63,9 @@ const girlsWatches = [
   { name: "Emporio Arman_i AR1143 - J1455", image: EmporioAR1143B, price: "₹2,500" },
   { name: "Empori o Arman_i For her 2323 white dial", image: Emporio2323, price: "₹3,000" },
 ];
-
 const GirlsWatch = () => {
   const [selectedWatch, setSelectedWatch] = useState(null);
-  const { addToCart } = useCart();
+  const { addToCart, addToWishlist, wishlist } = useCart();
   const [popup, setPopup] = useState("");
 
   const showPopup = (message) => {
@@ -74,16 +73,38 @@ const GirlsWatch = () => {
     setTimeout(() => setPopup(""), 2000);
   };
 
+  const getNumericPrice = (priceStr) => {
+    if (!priceStr) return 0;
+    return Number(priceStr.toString().replace(/[^0-9.]/g, ""));
+  };
+
   const handleAddToCart = (watch) => {
-    addToCart(watch);
-    showPopup(`${watch.name} added to cart!`);
+    const cartItem = {
+      id: watch.id,
+      name: watch.name,
+      price: getNumericPrice(watch.price),
+      quantity: 1,
+      image: watch.image,
+    };
+    addToCart(cartItem);
+    showPopup(`✅ ${watch.name} added to cart!`);
+  };
+
+  const handleWishlist = (watch) => {
+    addToWishlist(watch);
+    showPopup(
+      wishlist.some((w) => w.id === watch.id)
+        ? `${watch.name} removed from Wishlist!`
+        : `${watch.name} added to Wishlist!`
+    );
   };
 
   const relatedItems = selectedWatch
-    ? girlsWatches.filter((watch) => watch.name !== selectedWatch.name).slice(0, 4)
+    ? girlsWatches
+        .filter((watch) => watch.id !== selectedWatch.id)
+        .slice(0, 4)
     : [];
 
-  // ✅ Detail View
   if (selectedWatch) {
     return (
       <div className="product-detail-page">
@@ -126,16 +147,22 @@ const GirlsWatch = () => {
                   Add to Cart
                 </button>
                 <button className="btn-buy">Buy Now</button>
-               
-                <button className="btn-buy">Wishlist</button>
+                <button
+                  className="btn-wishlist"
+                  onClick={() => handleWishlist(selectedWatch)}
+                >
+                  {wishlist.some((w) => w.id === selectedWatch.id)
+                    ? "Remove from Wishlist"
+                    : "♡ Wishlist"}
+                </button>
               </div>
 
               <h3 className="related-title">Related Items</h3>
               <div className="related-items-grid">
-                {relatedItems.map((item, idx) => (
+                {relatedItems.map((item) => (
                   <div
                     className="related-card"
-                    key={idx}
+                    key={item.id}
                     onClick={() => setSelectedWatch(item)}
                   >
                     <img src={item.image} alt={item.name} />
@@ -148,21 +175,19 @@ const GirlsWatch = () => {
           </div>
         </div>
 
-        {/* Popup */}
         {popup && <div className="popup">{popup}</div>}
       </div>
     );
   }
 
-  // ✅ Collection Grid Page (no Add to Cart button here)
   return (
     <div className="products-container">
       <h2 className="products-title">Girls Watches Collection</h2>
       <div className="products-grid">
-        {girlsWatches.map((watch, index) => (
+        {girlsWatches.map((watch) => (
           <div
             className="product-card"
-            key={index}
+            key={watch.id}
             onClick={() => setSelectedWatch(watch)}
           >
             <img src={watch.image} alt={watch.name} className="product-image" />

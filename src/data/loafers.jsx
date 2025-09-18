@@ -65,8 +65,9 @@ const Loafers = () => {
   };
 
   const handleAddToCart = (product) => {
-    addToCart(product);
-    showPopup(`${product.name} added to cart!`);
+    console.log(`✅ Add to Cart clicked for: ${product.name}`); // 🔹 Console log
+    addToCart(product); // 🔹 Add to cart logic
+    showPopup(`${product.name} added to cart!`); // 🔹 Popup message
   };
 
   // Check if user came via detail page navigation
@@ -122,6 +123,8 @@ const Loafers = () => {
               </div>
             </div>
           </div>
+
+          {/* 🔹 Popup message */}
           {popup && <div className="popup">{popup}</div>}
         </div>
       )}

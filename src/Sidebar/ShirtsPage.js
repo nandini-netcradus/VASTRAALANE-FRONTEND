@@ -1,6 +1,7 @@
 // sidebar/ShirtsPage.js
 import React, { useState } from "react";
 import "../scss/_ShirtsPage.scss";
+import { useCart } from "../context/CartContext"; 
 
 // 🔽 Images import
 import VersaceBlue from "../assets/Versace Couture Petrol Blue Back Print Imported Polo T-Shirtt.png";
@@ -75,12 +76,21 @@ const tshirts = [
 const ShirtsPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  // ✅ Cart & Wishlist from Context
+  const { addToCart, addToWishlist, wishlist } = useCart();
+
   const handleProductClick = (prod) => {
     setSelectedProduct(prod);
   };
 
   const handleBack = () => {
     setSelectedProduct(null);
+  };
+
+  // ✅ clean price helper (₹1999 -> 1999)
+  const getNumericPrice = (priceStr) => {
+    if (!priceStr) return 0;
+    return Number(priceStr.toString().replace(/[^0-9.]/g, ""));
   };
 
   const relatedProducts = selectedProduct
@@ -124,11 +134,33 @@ const ShirtsPage = () => {
               <p className="current-price">{selectedProduct.price}</p>
               <p className="discount">{selectedProduct.discount}</p>
 
-              {/* 🔹 Action Buttons */}
+              {/* 🔹 Action Buttons with logic */}
               <div className="action-buttons">
                 <button className="buy-now">Buy Now</button>
-                <button className="add-cart">Add to Cart</button>
-                <button className="wishlist">Wishlist</button>
+
+                <button
+                  className="add-cart"
+                  onClick={() =>
+                    addToCart({
+                      id: selectedProduct.id,
+                      name: selectedProduct.name,
+                      price: getNumericPrice(selectedProduct.price),
+                      quantity: 1,
+                      image: selectedProduct.image,
+                    })
+                  }
+                >
+                  Add to Cart
+                </button>
+
+                <button
+                  className="wishlist"
+                  onClick={() => addToWishlist(selectedProduct)}
+                >
+                  {wishlist.some((w) => w.id === selectedProduct.id)
+                    ? "Remove from Wishlist"
+                    : "Wishlist"}
+                </button>
               </div>
 
               {/* 🔹 Product Features Points */}

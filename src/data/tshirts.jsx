@@ -78,29 +78,43 @@ const Tshirts = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(1);
+  const [popup, setPopup] = useState("");
 
   const { addToCart, addToWishlist } = useCart();
 
+  const showPopup = (message) => {
+    setPopup(message);
+    setTimeout(() => setPopup(""), 2000);
+  };
+
   const handleAddToCart = () => {
     if (!selectedProduct) return;
-    const cartItem = {
-      ...selectedProduct,
-      size: selectedSize,
+
+    const payload = {
+      productId: selectedProduct.id,
       quantity,
+      size: selectedSize,
     };
-    addToCart(cartItem);
-    alert("✅ Added to cart!");
+
+    try {
+      addToCart(payload);
+      showPopup(`✅ ${selectedProduct.name} added to cart!`);
+    } catch (err) {
+      console.error(err);
+      showPopup(`❌ Failed to add ${selectedProduct.name} to cart.`);
+    }
   };
 
   const handleAddToWishlist = () => {
     if (!selectedProduct) return;
     addToWishlist(selectedProduct);
-    alert("❤️ Added to wishlist!");
+    showPopup(`❤️ ${selectedProduct.name} added to wishlist!`);
   };
-
 
   return (
     <div className="tshirts-page">
+      {popup && <div className="popup">{popup}</div>}
+
       <h2 className="page-title">Premium T-Shirts & Shirts</h2>
 
       {/* Product Grid View */}
@@ -134,28 +148,39 @@ const Tshirts = () => {
               <h2>{selectedProduct.name}</h2>
               <p className="price">
                 {selectedProduct.price}{" "}
-                <span className="old-price">{selectedProduct.oldPrice}</span>
+                <span className="old-price">{selectedProduct.oldPrice}</span>{" "}
+                <span className="discount">{selectedProduct.discount}</span>
               </p>
-              <p className="discount">{selectedProduct.discount}</p>
 
-              {/* ✅ Size Options */}
+              {/* Size Options */}
               <div className="size-options">
                 <h4>Size:</h4>
                 <div className="sizes">
-                  <button>S</button>
-                  <button>M</button>
-                  <button>L</button>
-                  <button>XL</button>
+                  {["S", "M", "L", "XL"].map((size) => (
+                    <button
+                      key={size}
+                      className={selectedSize === size ? "selected" : ""}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* ✅ Quantity */}
+              {/* Quantity */}
               <div className="quantity">
                 <h4>Quantity:</h4>
                 <div className="qty-box">
-                  <button>-</button>
-                  <input type="text" value="1" readOnly />
-                  <button>+</button>
+                  <button
+                    onClick={() =>
+                      setQuantity(quantity > 1 ? quantity - 1 : 1)
+                    }
+                  >
+                    -
+                  </button>
+                  <input type="number" value={quantity} readOnly />
+                  <button onClick={() => setQuantity(quantity + 1)}>+</button>
                 </div>
               </div>
 
@@ -170,24 +195,32 @@ const Tshirts = () => {
                 <button className="btn-buy">Buy Now</button>
               </div>
 
-              {/* ✅ Product Details List */}
+              {/* Product Details */}
               <div className="product-details">
                 <h4>Product Details</h4>
                 <ul>
-                   <li><FaCheckCircle className="tick-icon" /> Free Delivery on all orders</li>
-                    <li><FaCheckCircle className="tick-icon" /> 14 Days Return / Replacement Policy</li>
-                    <li><FaCheckCircle className="tick-icon" /> Material: 100% Premium Cotton</li>
-                    <li><FaCheckCircle className="tick-icon" /> Care Instructions: Machine Wash Cold</li>
-                     <li><FaCheckCircle className="tick-icon" /> Perfect for Casual & Formal Wear</li>
+                  <li>
+                    <FaCheckCircle className="tick-icon" /> Free Delivery on all
+                    orders
+                  </li>
+                  <li>
+                    <FaCheckCircle className="tick-icon" /> 14 Days Return /
+                    Replacement Policy
+                  </li>
+                  <li>
+                    <FaCheckCircle className="tick-icon" /> Material: 100% Premium
+                    Cotton
+                  </li>
+                  <li>
+                    <FaCheckCircle className="tick-icon" /> Care Instructions:
+                    Machine Wash Cold
+                  </li>
+                  <li>
+                    <FaCheckCircle className="tick-icon" /> Perfect for Casual &
+                    Formal Wear
+                  </li>
                 </ul>
               </div>
-
-              {/* <button
-                className="btn-back"
-                onClick={() => setSelectedProduct(null)}
-              >
-                ← Back
-              </button> */}
             </div>
           </div>
 
@@ -222,6 +255,3 @@ const Tshirts = () => {
 };
 
 export default Tshirts;
-
-
-

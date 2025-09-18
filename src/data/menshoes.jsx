@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_menshoes.scss";
+import { useCart } from "../context/CartContext";
 
 // ✅ Import all shoe images
 import Adapt_Automax_Full_Black_Shoes from "../assets/Adapt_Automax_Full_Black_Shoes.jpg";
@@ -130,13 +131,26 @@ const menshoes = [
 ];
 const Menshoes = () => {
   const [selectedShoe, setSelectedShoe] = useState(null);
+  const { addToCart } = useCart();
+  const [popup, setPopup] = useState("");
+
+  const showPopup = (message) => {
+    setPopup(message);
+    setTimeout(() => setPopup(""), 2000);
+  };
+
+  const handleAddToCart = (shoe) => {
+    console.log(`✅ Add to Cart clicked for: ${shoe.name}`);
+    addToCart(shoe);
+    showPopup(`${shoe.name} added to cart!`);
+  };
 
   return (
     <div className="menshoes-page">
       <h1 className="shoes-title">Men Shoes Collection</h1>
 
-      {/* Grid of Shoes */}
       {!selectedShoe ? (
+        // 🔹 Grid of Shoes
         <div className="shoes-grid">
           {menshoes.map((shoe) => (
             <div
@@ -148,18 +162,15 @@ const Menshoes = () => {
               <h3>{shoe.name}</h3>
               <p className="price">
                 ₹{shoe.price}
-                {shoe.oldPrice && (
-                  <span className="old-price">₹{shoe.oldPrice}</span>
-                )}
+                {shoe.oldPrice && <span className="old-price">₹{shoe.oldPrice}</span>}
               </p>
               <p className="discount">{shoe.discount}</p>
             </div>
           ))}
         </div>
       ) : (
-        // ✅ Detail View
+        // 🔹 Detail View
         <div className="shoe-detail">
-
           <div className="detail-main">
             <div className="detail-image">
               <img src={selectedShoe.image} alt={selectedShoe.name} />
@@ -169,13 +180,10 @@ const Menshoes = () => {
               <h2>{selectedShoe.name}</h2>
               <p className="price">
                 ₹{selectedShoe.price}
-                {selectedShoe.oldPrice && (
-                  <span className="old-price">₹{selectedShoe.oldPrice}</span>
-                )}
+                {selectedShoe.oldPrice && <span className="old-price">₹{selectedShoe.oldPrice}</span>}
               </p>
               <p className="discount">{selectedShoe.discount}</p>
 
-              {/* ✅ Product highlights */}
               <ul className="product-highlights">
                 <li>✅ 7 Days Return Policy</li>
                 <li>✅ Premium Quality Material</li>
@@ -183,21 +191,26 @@ const Menshoes = () => {
                 <li>✅ Secure Payment Options</li>
               </ul>
 
-              {/* ✅ Actions */}
+              {/* 🔹 Actions */}
               <div className="product-actions">
-                <button className="btn-cart">Add to Cart</button>
+                <button
+                  className="btn-cart"
+                  onClick={() => handleAddToCart(selectedShoe)}
+                >
+                  Add to Cart
+                </button>
                 <button className="btn-wishlist">Wishlist</button>
                 <button className="btn-buy">Buy Now</button>
               </div>
             </div>
           </div>
 
-          {/* ✅ Related Items */}
+          {/* 🔹 Related Items */}
           <h3 className="related-title">Related Items</h3>
           <div className="related-items">
             {menshoes
               .filter((s) => s.id !== selectedShoe.id)
-              .slice(0, 4) // max 4 related products
+              .slice(0, 4)
               .map((item) => (
                 <div
                   key={item.id}
@@ -208,14 +221,15 @@ const Menshoes = () => {
                   <h4>{item.name}</h4>
                   <p className="price">
                     ₹{item.price}
-                    {item.oldPrice && (
-                      <span className="old-price">₹{item.oldPrice}</span>
-                    )}
+                    {item.oldPrice && <span className="old-price">₹{item.oldPrice}</span>}
                   </p>
                   <p className="discount">{item.discount}</p>
                 </div>
               ))}
           </div>
+
+          {/* 🔹 Popup message */}
+          {popup && <div className="popup">{popup}</div>}
         </div>
       )}
     </div>

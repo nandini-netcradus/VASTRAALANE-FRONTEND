@@ -1,8 +1,6 @@
-
 import React, { useState } from "react";
 import "../scss/_SunglassesPage.scss";
-
-
+import { useCart } from "../context/CartContext";
 
 // ✅ Import all sunglasses images
 import DolceGabbana from "../assets/_Dolce_and_gabbana_5011.png";
@@ -69,13 +67,17 @@ const sunglasses = [
   { id: 30, name: "Versace 127 Gold Blue", img: Versace, price: "₹1199", oldPrice: "₹12,400", discount: "50% off" },
 ];
 
-
-
 const SunglassesPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart, addToWishlist, wishlist } = useCart();
 
   const handleProductClick = (prod) => setSelectedProduct(prod);
   const handleBack = () => setSelectedProduct(null);
+
+  const getNumericPrice = (priceStr) => {
+    if (!priceStr) return 0;
+    return Number(priceStr.toString().replace(/[^0-9.]/g, ""));
+  };
 
   const relatedProducts = selectedProduct
     ? sunglasses.filter((p) => p.id !== selectedProduct.id)
@@ -105,7 +107,10 @@ const SunglassesPage = () => {
         </>
       ) : (
         <div className="sunglasses-details">
-          
+          <button className="back-btn" onClick={handleBack}>
+            &larr; Back
+          </button>
+
           <div className="details-container">
             <div className="details-image">
               <img src={selectedProduct.img} alt={selectedProduct.name} />
@@ -115,10 +120,33 @@ const SunglassesPage = () => {
               <p className="old-price">{selectedProduct.oldPrice}</p>
               <p className="current-price">{selectedProduct.price}</p>
 
+              {/* 🔹 Action Buttons */}
               <div className="product-action-buttons">
                 <button className="buy-btn">Buy Now</button>
-                <button className="cart-btn">Add to Cart</button>
-                <button className="wishlist-btn">Wishlist</button>
+
+                <button
+                  className="cart-btn"
+                  onClick={() =>
+                    addToCart({
+                      id: selectedProduct.id,
+                      name: selectedProduct.name,
+                      price: getNumericPrice(selectedProduct.price),
+                      quantity: 1,
+                      image: selectedProduct.img,
+                    })
+                  }
+                >
+                  Add to Cart
+                </button>
+
+                <button
+                  className="wishlist-btn"
+                  onClick={() => addToWishlist(selectedProduct)}
+                >
+                  {wishlist.some((w) => w.id === selectedProduct.id)
+                    ? "Remove from Wishlist"
+                    : "Wishlist"}
+                </button>
               </div>
 
               <div className="policy-box">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../scss/_luxuryWatch.scss";
+import { useCart } from "../context/CartContext";
 
 // Images import
 import ArmaniExchange from "../assets/Arman_i_ Exchange watch.jpg";
@@ -64,9 +65,21 @@ const products = [
   { id: 23, name: "Versace Aion Chronograph.png", image: Versace1, price: 1999, oldPrice: 42999 },
 ];
 
-
 const LuxuryWatch = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart } = useCart();
+  const [popup, setPopup] = useState("");
+
+  const showPopup = (message) => {
+    setPopup(message);
+    setTimeout(() => setPopup(""), 2000);
+  };
+
+  const handleAddToCart = (product) => {
+    console.log(`✅ Add to Cart clicked for: ${product.name}`);
+    addToCart(product);
+    showPopup(`${product.name} added to cart!`);
+  };
 
   return (
     <div className="luxurywatch-page">
@@ -92,7 +105,6 @@ const LuxuryWatch = () => {
         <>
           {/* ✅ Product Details Section */}
           <div className="product-detail">
-            {/* Left Side Image */}
             <div className="detail-left">
               <img
                 src={selectedProduct.image}
@@ -101,7 +113,6 @@ const LuxuryWatch = () => {
               />
             </div>
 
-            {/* Right Side Info */}
             <div className="detail-right">
               <h2>{selectedProduct.name}</h2>
               <p className="price">
@@ -110,7 +121,12 @@ const LuxuryWatch = () => {
               </p>
 
               <div className="product-actions">
-                <button className="btn-cart">Add to Cart</button>
+                <button
+                  className="btn-cart"
+                  onClick={() => handleAddToCart(selectedProduct)}
+                >
+                  Add to Cart
+                </button>
                 <button className="btn-wishlist">Wishlist</button>
                 <button className="btn-buy">Buy Now</button>
               </div>
@@ -121,7 +137,6 @@ const LuxuryWatch = () => {
                 <p>Type: Regular</p>
               </div>
 
-              {/* ✅ Product Details Section */}
               <div className="product-specs">
                 <h3>Product Details</h3>
                 <ul>
@@ -133,12 +148,6 @@ const LuxuryWatch = () => {
                   <li><strong>Warranty:</strong> 2 years (provided by brand/manufacturer)</li>
                   <li><strong>Disclaimer:</strong> The Watch Cases might differ from the image shown.</li>
                 </ul>
-
-                {/* <h3>Size & Fit</h3>
-                <ul>
-                  <li><strong>Dial width:</strong> 40 mm</li>
-                  <li><strong>Strap Width:</strong> 21 mm</li>
-                </ul> */}
               </div>
             </div>
           </div>
@@ -159,13 +168,15 @@ const LuxuryWatch = () => {
                     <img src={item.image} alt={item.name} />
                     <h4>{item.name}</h4>
                     <p className="price">
-                      {item.price}{" "}
-                      <span className="old-price">{item.oldPrice}</span>
+                      {item.price} <span className="old-price">{item.oldPrice}</span>
                     </p>
                   </div>
                 ))}
             </div>
           </div>
+
+          {/* 🔹 Popup message */}
+          {popup && <div className="popup">{popup}</div>}
         </>
       )}
     </div>
