@@ -15,7 +15,9 @@ import ProductList from "./pages/ProductList";
 import NewArrivals from "./pages/NewArrivals";
 import CategoryPage from "./components/CategoryPage";
 import AccountPage from "./pages/AccountPage";
-
+import CustomerCare from "./pages/CustomerCare";
+import About from "./pages/About";
+import TermsConditions from "./pages/TermsConditions";
 
 // ✅ Category pages
 import FlipFlops from "./data/FlipFlops";
@@ -97,6 +99,9 @@ function App() {
             <Route path="/Sandals-page" element={<SandalsPage />} />
             <Route path="/account" element={<AccountPage/>} />
 
+              <Route path="/about" element={<About />} />
+              <Route path="/support" element={<CustomerCare />} />
+              <Route path="/terms" element={<TermsConditions />} />
 
             {/* Cart */}
             <Route path="/cart" element={<CartPage />} />
